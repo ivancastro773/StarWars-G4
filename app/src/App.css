@@ -3,8 +3,9 @@
 }
 
 .bg-main-dark {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-white-nav);
 }
+
 
 .App {
   text-align: center;
@@ -14,6 +15,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+a:link, a:visited, a:active {
+  text-decoration:none;
+} 
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

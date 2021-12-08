@@ -4,7 +4,7 @@
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   --dark: #111;
-  --bg-dark: #111;
+  --bg-white-nav: white;
 }
 
 * {
