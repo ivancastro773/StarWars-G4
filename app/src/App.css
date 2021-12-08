@@ -1,3 +1,11 @@
+.main-container {
+  padding: 0 0;
+}
+
+.bg-main-dark {
+  background-color: var(--bg-dark);
+}
+
 .App {
   text-align: center;
 }
