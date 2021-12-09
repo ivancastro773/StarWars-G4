@@ -24,17 +24,17 @@ function CarrouselMovies() {
   };
 
   return (
-    <section className="carrousel-slider movies-gallery">
+    <section className="movies-gallery">
       <div className="card movie-card-container">
-        <div className="row g-0">
-          <div className="col-md-5 col-sm-5">
+        <div className="row g-0 movie-info-container">
+          <div className="col-md-5 col-sm-5 movie-image">
             <img
               src={images[index].src}
               className="img-fluid rounded-start"
               alt={images[index].alt}
             />
           </div>
-          <div className="col-md-7 col-sm-7">
+          <div className="col-md-7 col-sm-7 movie-info">
             <div className="card-body">
               <h5 className="card-title">{images[index].title}</h5>
               <p className="card-text">{images[index].description}</p>

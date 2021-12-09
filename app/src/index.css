@@ -3,7 +3,7 @@
   --ff-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
-  --dark: #111;
+  --dark: rgba(0, 0, 0, 1);
   --bg-white-nav: white;
 }
 
@@ -20,7 +20,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #111;
+  background-color: var(--dark);
   color: #fff;
 }
 

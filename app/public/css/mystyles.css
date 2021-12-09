@@ -7,16 +7,16 @@
 
 .carrousel-container {
 	width: 100%;
+  height: 100%;
 }
 
 .slideshow-container {
   position: relative;
   margin: auto;
+  height: 100%;
 }
 
-/* Hide the images by default */
 .my-slides {
-  /* display: none; */
   height: 400px;
 }
 
@@ -76,15 +76,6 @@
   background-color: rgba(0,0,0,0.95);
 }
 
-/* Number text (1/3 etc) */
-.slider-numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
 /* Fading animation */
 .slider-fade {
   -webkit-animation-name: sliderfade;
@@ -95,6 +86,8 @@
 
 /* movies gallery */
 .movies-gallery {
+  height: auto;
+  overflow: hidden;
   margin: 0;
   padding: 20px 0 20px 0;
   position: relative;
@@ -121,6 +114,11 @@
   color: #ccc;
 }
 
+.movie-info {
+  display: flex;
+  align-items: center;
+}
+
 /* animations */
 @-webkit-keyframes sliderfade {
   from {opacity: .4}
@@ -133,25 +131,62 @@
 }
 
 /* media queries */
-@media only screen and (max-width: 767.98px) {
+@media only screen and (max-width: 575.98px) {
+  .movie-image {
+    height: 400px;
+  }
   .movie-card-container {
     width: 70%;
-    height: 300px;
+    background-color: rgba(11,11,11,0.2);
+  }
+  .img-fluid {
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+  .movie-card-container {
+    width: 70%;
+  }
+  .movies-gallery {
+    height: 410px;
   }
 }
 
 @media only screen and (min-width: 778px) and (max-width: 991.98px) {
   .movie-card-container {
     width: 500px;
-    height: 300px;
+  }
+  .movies-gallery {
+    height: 410px;
   }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1439.98px) {
   .movie-card-container {
     width: 600px;
-    height: 360px;
+  }
+  .movies-gallery {
+    height: 420px;
   }
 }
 
-@media only screen and (min-width: 1440px) {}
+@media only screen and (min-width: 1440px) {
+  .carrousel-slider {
+    height: 500px;
+  }
+  .movie-card-container {
+    width: 800px;
+    height: 460px;
+  }
+  .slideshow-container {
+    height: 100%;
+  }
+  .my-slides {
+    height: 100%;
+  }
+  .movies-gallery {
+    height: auto;
+  }
+}
