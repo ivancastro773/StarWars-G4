@@ -1,0 +1,47 @@
+.container-cards-character{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    gap: 1rem;
+}
+.card-character{
+    display: flex;
+    background-image: url(./luke.jpg);
+    border: 1px solid grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 23, 98, 0.5);
+    background-blend-mode: overlay;
+    border-radius: 15px;
+    height: 450px;
+    width: 260px;
+}
+.card-character:hover{
+    box-shadow: 2px 2px 2px 2px rgba(51, 246, 51, 0.2);
+}
+.img-character{
+    border-radius: 15px;
+    width: 100%;
+    z-index: -1;
+}
+.title-character{
+    display: flex;
+    padding: 10px;
+}
+.text-description{
+    list-style: none;
+}
+.text-character{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.btn-edit-character{
+    border: none;
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    background: rgb(185, 238, 185);
+}

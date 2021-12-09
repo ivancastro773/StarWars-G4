@@ -1,16 +1,32 @@
-function Footer() {
+import React from 'react';
+import './footer.css';
+
+const Footer = () => {
   return (
-    <footer>
-      <h2>footer</h2>
-      <p>lorem ipsum</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-        magnam iste laudantium dolore, rerum inventore illo necessitatibus.
-        Atque, nisi culpa nobis ipsam autem ipsum maxime. Eaque maxime porro
-        dolor aliquam!
-      </p>
-    </footer>
+    <div className="container-footer">
+      <div className="desc-footer">
+        <div>
+          <h3> Follow Star Wars</h3>
+          <div className="link-social">
+            <p>
+              <a href=""><i class="fab hola fa-facebook fa-3x"></i></a>
+            </p>
+            <p>
+              <a href=""><i class="fab fa-instagram hola fa-3x"></i></a>
+            </p>
+            <p>
+              <a href=""><i class="fab fa-twitter hola fa-3x"></i></a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="tags-footer">
+        <p>TERM OF USE |</p>
+        <p>Privacy Policy |</p>
+        <p>Star Wars at shopDisney |</p>
+      </div>
+    </div>
   );
-}
+};
 
 export default Footer;

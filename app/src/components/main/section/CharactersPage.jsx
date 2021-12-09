@@ -1,8 +1,8 @@
+import Character from "./character/Character";
+
 function Characters() {
 	return (
-		<div>
-			<h2>CHARACTERS</h2>
-		</div>
+		<Character />
 	)
 }
 
