@@ -1,0 +1,157 @@
+/* carrousel */
+.carrousel-slider {
+  min-height: 400px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carrousel-container {
+	width: 100%;
+}
+
+.slideshow-container {
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.my-slides {
+  /* display: none; */
+  height: 400px;
+}
+
+.img-carrousel {
+	height: 100%;
+  width: 100%;
+	object-fit: cover;
+}
+
+/* Next & previous buttons */
+.btn-slider-prev,
+.btn-slider-next,
+.movie-slider-prev,
+.movie-slider-next {
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: transparent;
+}
+
+.btn-slider-prev,
+.btn-slider-next {
+  width: auto;
+  margin-top: -22px;
+  top: 50%
+}
+
+.movie-slider-prev,
+.movie-slider-next {
+  width: 80px;
+  top: 0;
+  height: 100%;
+}
+
+/* Position the "next button" to the right */
+.btn-slider-next,
+.movie-slider-next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.btn-slider-prev:hover,
+.btn-slider-next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.movie-slider-prev:hover,
+.movie-slider-next:hover {
+  background-color: rgba(0,0,0,0.95);
+}
+
+/* Number text (1/3 etc) */
+.slider-numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Fading animation */
+.slider-fade {
+  -webkit-animation-name: sliderfade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: sliderfade;
+  animation-duration: 1.5s;
+}
+
+/* movies gallery */
+.movies-gallery {
+  margin: 0;
+  padding: 20px 0 20px 0;
+  position: relative;
+  background-image: url(../img/space-stars-green-min.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.movie-card-container {
+  background-color: rgba(11,11,11,0.5);
+  margin: 0 auto;
+  border-bottom: 4px solid rgba(12, 231, 59,0.5);
+  overflow: hidden;
+}
+
+.img-fluid {
+  object-fit: cover;
+  height: 100%;
+}
+
+.release-date > span {
+  font-weight: bold;
+  color: #ccc;
+}
+
+/* animations */
+@-webkit-keyframes sliderfade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes sliderfade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* media queries */
+@media only screen and (max-width: 767.98px) {
+  .movie-card-container {
+    width: 70%;
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 778px) and (max-width: 991.98px) {
+  .movie-card-container {
+    width: 500px;
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1439.98px) {
+  .movie-card-container {
+    width: 600px;
+    height: 360px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {}

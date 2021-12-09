@@ -1,8 +1,15 @@
 function Footer() {
   return (
-    <div>
-      <h2>FOOTER</h2>
-    </div>
+    <footer>
+      <h2>footer</h2>
+      <p>lorem ipsum</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+        magnam iste laudantium dolore, rerum inventore illo necessitatibus.
+        Atque, nisi culpa nobis ipsam autem ipsum maxime. Eaque maxime porro
+        dolor aliquam!
+      </p>
+    </footer>
   );
 }
 
