@@ -37,6 +37,9 @@
     flex-direction: column;
     color: black;
 }
+.form-character-edit{
+    margin-top: 5px;
+}
 .data-list{
     list-style: none;
 }
