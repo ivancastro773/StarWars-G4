@@ -1,4 +1,4 @@
-import Character from "./character/Character";
+import Character from "../character/Character";
 //mocks
 import {dataCharacter} from '../../../mocks/mocksCharacterOne.js';
 function Characters() {

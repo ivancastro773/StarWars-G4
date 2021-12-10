@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { imagesCarrouselOne } from '../../../mocks/images-carrousel';
+import { imagesCarrouselOne } from '../../../../mocks/images-carrousel';
 
 function Carrousel() {
   const [index, setIndex] = useState(0);

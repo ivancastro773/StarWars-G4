@@ -9,13 +9,19 @@ const Footer = () => {
           <h3> Follow Star Wars</h3>
           <div className="link-social">
             <p>
-              <a href=""><i class="fab hola fa-facebook fa-3x"></i></a>
+              <a href="!#">
+                <i className="fab hola fa-facebook fa-3x"></i>
+              </a>
             </p>
             <p>
-              <a href=""><i class="fab fa-instagram hola fa-3x"></i></a>
+              <a href="!#">
+                <i className="fab fa-instagram hola fa-3x"></i>
+              </a>
             </p>
             <p>
-              <a href=""><i class="fab fa-twitter hola fa-3x"></i></a>
+              <a href="!#">
+                <i className="fab fa-twitter hola fa-3x"></i>
+              </a>
             </p>
           </div>
         </div>
