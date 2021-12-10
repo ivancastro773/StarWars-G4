@@ -53,7 +53,7 @@ const CharacterFormEdit = () => {
                 type="text"
                 placeholder="Color del pelo..."
               />
-              {errorHandle(errors).hair_color()}
+              {errors.hair_color}
               <Field
                 className="form-control"
                 id="skin_color"
