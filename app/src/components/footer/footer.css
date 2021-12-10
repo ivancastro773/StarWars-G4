@@ -1,0 +1,33 @@
+.container-footer{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    background: black;
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 23, 98, 0.5);
+    background-blend-mode: overlay;
+    background-image: url(./footer.jpg);
+}
+.hola:hover{
+    color: red;
+}
+.hola{
+    color: white;
+}
+.desc-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.link-social{
+    display: flex;
+    gap: 1rem;
+}
+.tags-footer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
