@@ -4,7 +4,9 @@
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   --dark: rgba(0, 0, 0, 1);
-  --bg-white-nav: white;
+  --white: rgba(255,255,255,1);
+  --bg-dark: $(--dark);
+  --bg-white: $(--white);
 }
 
 * {
@@ -27,4 +29,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  list-style: none;
+  text-decoration: none;
+  margin: 0 0;
+  padding: 0 0;
+}
+
+li, a {
+  text-decoration: none;
+}
+
+a:link, a:visited, a:active {
+  text-decoration:none;
 }

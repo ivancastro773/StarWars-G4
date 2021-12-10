@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 
 import PrivateRoute from '../../routes/PrivateRoute';
 
-import CharactersPage from './section/CharactersPage';
+import CharactersPage from './section/pages/CharactersPage';
 import Home from './section/Home';
-import Vehicles from './section/Vehicles';
+import VehiclesPage from './section/pages/VehiclesPage';
 
 function Main() {
   return (
@@ -23,7 +23,7 @@ function Main() {
           path="vehicles"
           element={
             <PrivateRoute logged={true}>
-              <Vehicles />
+              <VehiclesPage />
             </PrivateRoute>
           }
         />

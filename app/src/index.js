@@ -25,7 +25,7 @@ ReactDOM.render(
         />
         <Route
           exact
-          path="/"
+          path="//*"
           element={
             <PrivateRoute logged={true}>
               <App />

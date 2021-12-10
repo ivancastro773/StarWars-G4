@@ -1,3 +1,20 @@
+/* @font-face {
+  font-family: StarJedi;
+  src: url(../fonts/StarJedi-DGRW.ttf) format('truetype');
+} */
+
+.main-container {
+  padding: 0 0;
+  background-image: url(../img/space-stars-min.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bg-main-dark {
+  background-color: var(--bg-dark);
+}
+
 /* carrousel */
 .carrousel-slider {
   min-height: 400px;

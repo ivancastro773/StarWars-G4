@@ -1,5 +1,5 @@
-import Carrousel from "./Carrousel";
-import CarrouselMovies from "./CarrouselMovies";
+import Carrousel from "./carrousels/Carrousel";
+import CarrouselMovies from "./carrousels/CarrouselMovies";
 
 function Home() {
   return (

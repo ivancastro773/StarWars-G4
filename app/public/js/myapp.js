@@ -1,26 +1,27 @@
-/* document.addEventListener('DOMContentLoaded', () => {
-  let slides = Array.from(document.querySelectorAll('.my-slides'));
-  if (slides) {
-    let slideIndex = 1;
-    showSlides(slideIndex);
-    const plusSlides = (n) => showSlides((slideIndex += n));
-    document
-      .querySelector('#btnSliderPrev')
-      .addEventListener('click', (e) => plusSlides(-1));
-    document
-      .querySelector('#btnSliderNext')
-      .addEventListener('click', (e) => plusSlides(1));
-    function showSlides(n) {
-      let slidesLen = slides.length;
-      if (n > slidesLen) {
-        slideIndex = 1;
+document.addEventListener('DOMContentLoaded', () => {
+  dropdownMenu();
+  function dropdownMenu() {
+    const dropdownLinks = document.querySelector('.dropdown-navigation-links');
+    const hamburger = document.querySelector('#hamburger');
+    const bars = document.querySelector('#bars');
+    const close = document.querySelector('#close');
+    const openDropdown = () => {
+      const cl = dropdownLinks.classList;
+      cl.toggle('showitem');
+      cl.toggle('hideitem');
+      if (Array.from(cl).includes('d-none')) {
+        cl.toggle('d-none');
+      } else {
+        setTimeout(() => cl.toggle('d-none'), 1000);
       }
-      if (n < 1) {
-        slideIndex = slidesLen;
-      }
-      slides.forEach((slide) => (slide.style.display = 'none'));
-      slides[slideIndex - 1].style.display = 'block';
-    }
+    };
+    const hamburgerToggle = () => {
+      bars.classList.toggle('d-none');
+      close.classList.toggle('d-none');
+    };
+    hamburger.addEventListener('click', () => {
+      openDropdown();
+      hamburgerToggle();
+    });
   }
 });
- */
