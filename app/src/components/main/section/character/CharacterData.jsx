@@ -36,7 +36,9 @@ const CharacterData = ({ character, setPermission, setInfo, id }) => {
           <i className="fas fa-jedi"> </i> Sexo: {character.gender}
         </li>
       </ul>
-      <img src="img/planet.jpg" className="img-planet" alt="planet" />
+      <div className="img-planet-container">
+        <img src="img/planet.jpg" className="img-planet" alt="planet" />
+      </div>
       <button
         type="button"
         className="btn-action start-edit btn-edit-chac"

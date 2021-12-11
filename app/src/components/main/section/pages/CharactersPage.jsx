@@ -5,7 +5,7 @@ import { AxiosRequest } from '../../../helpers/axios-request';
 import Character from '../character/Character';
 import Loader from '../loader/Loader';
 
-function Characters() {
+function CharactersPage() {
   const [characters, setCharacters] = useState([]);
   const [apiurl, setApiUrl] = useState('https://swapi.dev/api/people/?page=1');
   const [prevpage, setPrevpage] = useState('');
@@ -76,4 +76,4 @@ function Characters() {
   );
 }
 
-export default Characters;
+export default CharactersPage;
