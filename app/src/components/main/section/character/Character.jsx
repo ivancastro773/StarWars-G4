@@ -1,24 +1,38 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './character.css';
-//Sweet Alert
-import Swal from 'sweetalert2';
-//img
-import img from './luke.jpg';
 import CharacterData from './CharacterData';
 import CharacterFormEdit from './CharacterFormEdit';
 
-const Character = ({ character }) => {
-  const [info,setInfo] = useState(true);
-
+const Character = ({ character, id }) => {
+  const [info, setInfo] = useState(true);
+  const [permission, setPermission] = useState(0);
   return (
     <>
-      <div className="container-card-character">
-        <div className="card-box-character">
-          <div className="img-character">
-            <img src={img} className="img-style-chac" alt="" />
-          </div>
-          {info ? <CharacterData character={character} setInfo={setInfo}/> : <CharacterFormEdit/>}
+      <div key={id} className="card-box-character">
+        <div className="img-character">
+          <img
+            src="img/characters/portrait.png"
+            className="img-style-chac"
+            alt="character"
+          />
         </div>
+        {info ? (
+          <CharacterData
+            character={character}
+            setInfo={setInfo}
+            id={id}
+            setPermission={setPermission}
+          />
+        ) : permission === id ? (
+          <CharacterFormEdit values={character} setInfo={setInfo} />
+        ) : (
+          <CharacterData
+            character={character}
+            setInfo={setInfo}
+            id={id}
+            setPermission={setPermission}
+          />
+        )}
       </div>
     </>
   );
