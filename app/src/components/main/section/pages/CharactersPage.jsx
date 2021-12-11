@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
+import { Toast } from '../../../helpers/sweet-alert';
+import { AxiosRequest } from '../../../helpers/axios-request';
 import Character from '../character/Character';
+import Loader from '../loader/Loader';
 
 function Characters() {
   const [characters, setCharacters] = useState([]);
@@ -9,38 +11,36 @@ function Characters() {
   const [prevpage, setPrevpage] = useState('');
   const [nextpage, setNextpage] = useState('');
 
+  const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
+
   const handlePrevPageClick = () => {
-    window.scrollTo({
-      top: 80,
-      behavior: 'smooth',
-    });
+    goToTop();
     if (prevpage !== null) {
       setApiUrl(prevpage);
     }
   };
 
   const handleNextPageClick = () => {
-    window.scrollTo({
-      top: 80,
-      behavior: 'smooth',
-    });
+    goToTop();
     if (nextpage !== null) {
       setApiUrl(nextpage);
     }
   };
 
   useEffect(() => {
-    const getData = (url = apiurl) => {
-      axios
-        .get(url)
-        .then((res) => {
-          const { data } = res;
-          const { results, previous, next } = data;
-          setPrevpage(previous);
-          setNextpage(next);
-          setCharacters(results);
-        })
-        .catch((err) => console.log(err));
+    const getData = async (url = apiurl) => {
+      try {
+        const { status, data, msg } = await AxiosRequest({ url });
+        if (status !== 200) {
+          return Toast(msg, 'warning');
+        }
+        const { results, previous, next } = data;
+        setPrevpage(previous);
+        setNextpage(next);
+        setCharacters(results);
+      } catch (error) {
+        return Toast('Something bad happen', 'error');
+      }
     };
     getData();
   }, [apiurl]);
@@ -49,12 +49,7 @@ function Characters() {
     <>
       <div className="container-cards container-card-character">
         {characters.length === 0 ? (
-          <div className="characters-loader">
-            <div className="lds-ripple">
-              <div></div>
-              <div></div>
-            </div>
-          </div>
+          <Loader />
         ) : (
           characters.map((character, i) => (
             <Character key={i} character={character} id={i} />

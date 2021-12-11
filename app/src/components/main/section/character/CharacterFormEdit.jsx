@@ -1,9 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 
-import { Toast } from './helpers/sweet-alert';
+import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
-import './character.css';
 
 const CharacterFormEdit = ({ values, setInfo }) => {
   const initialValues = { ...values };
