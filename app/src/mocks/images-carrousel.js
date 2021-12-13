@@ -4,31 +4,55 @@ export const imagesCarrouselOne = () => {
       src: 'img/carrouselone/wallpaper-01.jpg',
       alt: 'star wars wallpaper 01',
       title: 'Wallpaper',
+      quote: {
+        text: 'La fuerza es poderosa en mi familia, mi padre la tenía, mi hermana la tiene, yo la tengo',
+        author: 'Luke Skywalker',
+      }
     },
     {
       src: 'img/carrouselone/wallpaper-02.jpg',
       alt: 'star wars wallpaper 02',
       title: 'Wallpaper',
+      quote: {
+        text: 'Que la fuerza este contigo... siempre',
+        author: 'Obi-Wan Kenobi',
+      }
     },
     {
       src: 'img/carrouselone/wallpaper-03.jpg',
       alt: 'star wars wallpaper 03',
       title: 'Wallpaper',
+      quote: {
+        text: 'Miedo, ira, agresividad, el lado oscuro ellos son. Si algún día rigen tu vida, para siempre tu destino dominarán',
+        author: 'Yoda',
+      }
     },
     {
       src: 'img/carrouselone/wallpaper-04.jpg',
       alt: 'star wars wallpaper 04',
       title: 'Wallpaper',
+      quote: {
+        text: 'Parece que estamos hechos para sufrir. Es nuestra suerte en la vida',
+        author: 'C3PO',
+      }
     },
     {
       src: 'img/carrouselone/wallpaper-05.jpg',
       alt: 'star wars wallpaper 05',
       title: 'Wallpaper',
+      quote: {
+        text: 'Me estás pidiendo que sea racional. Eso es algo que sé que no puedo hacer. Créame, desearía poder desear borrar mis sentimientos, pero no puedo',
+        author: 'Anakin Skywalker',
+      }
     },
     {
       src: 'img/carrouselone/wallpaper-06.jpg',
       alt: 'star wars wallpaper 06',
       title: 'Wallpaper',
+      quote: {
+        text: 'No tengo miedo de morir. He estado muriendo un poco cada día desde que volviste a mi vida',
+        author: 'Padme',
+      }
     },
   ];
 };

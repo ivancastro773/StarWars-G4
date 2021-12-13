@@ -25,6 +25,10 @@ function Carrousel() {
   return (
     <section className="carrousel-slider">
       <div className="carrousel-container">
+        <div className="star-quotes">
+          <h3 className="quote">&#8223;{images[index].quote.text}&#8221;</h3>
+          <span className="author">{images[index].quote.author}</span>
+        </div>
         <div className="slideshow-container">
           <div className="my-slides slider-fade">
             <img
