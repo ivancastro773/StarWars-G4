@@ -14,15 +14,15 @@ function VehiclesPage() {
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
 
   const handlePrevPageClick = () => {
-    goToTop();
     if (prevpage !== null) {
+      goToTop();
       setApiUrl(prevpage);
     }
   };
 
   const handleNextPageClick = () => {
-    goToTop();
     if (nextpage !== null) {
+      goToTop();
       setApiUrl(nextpage);
     }
   };
