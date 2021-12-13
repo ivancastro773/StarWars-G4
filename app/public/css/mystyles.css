@@ -233,7 +233,17 @@
   background-position: center;
   padding: 20px 0;
 }
-
+.add-character{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
+}
+.add-charac-icon{
+  color: #0f0;
+}
+.add-charac-icon:hover{
+  color: red;
+}
 .card-box-character,
 .card-box-vehicle {
   display: flex;

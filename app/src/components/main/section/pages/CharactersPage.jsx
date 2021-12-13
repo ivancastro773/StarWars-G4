@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
 import Character from '../character/Character';
@@ -26,8 +26,8 @@ function CharactersPage() {
       setApiUrl(nextpage);
     }
   };
-
-  useEffect(() => {
+  
+  /* useEffect(() => {
     const getData = async (url = apiurl) => {
       try {
         const { status, data, msg } = await AxiosRequest({ url });
@@ -43,18 +43,22 @@ function CharactersPage() {
       }
     };
     getData();
-  }, [apiurl]);
+  }, [apiurl]); */
 
   return (
     <>
+      <div></div>
+      <div className="add-character">
+      <Link to="/character-add"><i class="fas fa-plus-circle fa-3x add-charac-icon"></i></Link>
+      </div>
       <div className="container-cards container-card-character">
-        {characters.length === 0 ? (
+        {/*   {characters.length === 0 ? (
           <Loader />
         ) : (
           characters.map((character, i) => (
             <Character key={i} character={character} id={i} />
           ))
-        )}
+        )} */}
       </div>
       <div className="paginator-container">
         <button

@@ -5,6 +5,7 @@ import PrivateRoute from '../../routes/PrivateRoute';
 import CharactersPage from './section/pages/CharactersPage';
 import Home from './section/Home';
 import VehiclesPage from './section/pages/VehiclesPage';
+import CharacterAdd from './section/character/CharacterAdd';
 
 function Main() {
   return (
@@ -33,6 +34,15 @@ function Main() {
           element={
             <PrivateRoute logged={true}>
               <CharactersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          exact
+          path="character-add"
+          element={
+            <PrivateRoute logged={true}>
+              <CharacterAdd />
             </PrivateRoute>
           }
         />

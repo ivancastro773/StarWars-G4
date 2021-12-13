@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Schema from './validations/Schema';
 //css
-import './character.css';
 import './validations/Errors.css';
 /* ANIMACION : animate__animated animate__flipInY */
 const initialValue = {
