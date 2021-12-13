@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CharacterData = ({ character, setPermission, setInfo, id }) => {
+const VehicleData = ({ vehicle, setPermission, setInfo, id }) => {
   const fnChangeEdit = (e) => {
     const { target } = e;
     const { dataset } = target;
@@ -10,34 +10,33 @@ const CharacterData = ({ character, setPermission, setInfo, id }) => {
   };
   return (
     <div className="description-chac animate__animated animate__flipInY">
-      <h3>{character.name}</h3>
+      <h3>{vehicle.name}</h3>
       <div className="line"></div>
       <ul className="data-list">
         <li>
-          <i className="fas fa-jedi"></i> Altura: {character.height}
+          <i className="fas fa-jedi"></i> Modelo: {vehicle.model}
         </li>
         <li>
-          <i className="fas fa-jedi"></i> Masa: {character.mass}
+          <i className="fas fa-jedi"></i> Productor: {vehicle.manufacturer}
         </li>
         <li>
-          <i className="fas fa-jedi"></i> Color del pelo: {character.hair_color}
+          <i className="fas fa-jedi"></i> Costo: {vehicle.cost_in_credits}
         </li>
         <li>
-          <i className="fas fa-jedi"></i> Color del skin: {character.skin_color}
+          <i className="fas fa-jedi"></i> Equipo: {vehicle.crew}
         </li>
         <li>
-          <i className="fas fa-jedi"></i> Color de ojo: {character.eye_color}
+          <i className="fas fa-jedi"></i> Pasajeros: {vehicle.passengers}
         </li>
         <li>
-          <i className="fas fa-jedi"></i> Fecha de nacimiento:{' '}
-          {character.birth_year}
+          <i className="fas fa-jedi"></i> Capacidad: {vehicle.cargo_capacity}
         </li>
         <li>
-          <i className="fas fa-jedi"> </i> Sexo: {character.gender}
+          <i className="fas fa-jedi"> </i> Clase: {vehicle.vehicle_class}
         </li>
       </ul>
       <div className="img-planet-container">
-        <img src="img/planet.jpg" className="img-planet" alt="planet" />
+        <img src="img/vehicles/vehicle2.jpg" className="img-planet" alt="vehicle" />
       </div>
       <button
         type="button"
@@ -52,4 +51,4 @@ const CharacterData = ({ character, setPermission, setInfo, id }) => {
   );
 };
 
-export default CharacterData;
+export default VehicleData;

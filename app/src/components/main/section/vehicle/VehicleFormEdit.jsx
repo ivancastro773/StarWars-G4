@@ -1,44 +1,35 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
+
+import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
-//css
-import './character.css';
-import './validations/Errors.css';
-/* ANIMACION : animate__animated animate__flipInY */
-const initialValue = {
-  name: '',
-  height: '',
-  mass: '',
-  hair_color: '',
-  skin_color: '',
-  eye_color: '',
-  birth_year: '',
-  gender: '',
-};
-const CharacterFormEdit = () => {
-  const fnShow = (v) => {
-    console.log(v);
+
+const VehicleFormEdit = ({ values, setInfo }) => {
+  const initialValues = { ...values };
+  const handleSubmit = (values) => {
+    Toast('Edit complete', 'success');
+    setInfo(true);
   };
   return (
     <Formik
-      initialValues={initialValue}
+      initialValues={initialValues}
       validationSchema={Schema}
-      onSubmit={fnShow}
+      onSubmit={handleSubmit}
     >
       {({ errors }) => {
         const {
           name,
-          height,
-          mass,
-          hair_color,
-          skin_color,
-          eye_color,
-          birth_year,
-          gender,
+          model,
+          manufacturer,
+          cost_in_credits,
+          crew,
+          passengers,
+          cargo_capacity,
+          vehicle_class,
         } = errors;
         return (
           <div className="description-chac animate__animated animate__flipInY">
-            <Form className="form-edit-character">
+            <Form className="form-edit-vehicle">
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
@@ -60,15 +51,15 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="height"
-                  name="height"
+                  id="model"
+                  name="model"
                   type="text"
-                  placeholder="Altura..."
+                  placeholder="Modelo..."
                 />
-                <span title={height ? height : 'Ingresá los nuevos datos'}>
+                <span title={model ? model : 'Ingresá los nuevos datos'}>
                   <i
                     className={
-                      height
+                      model
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -78,15 +69,15 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="mass"
-                  name="mass"
+                  id="manufacturer"
+                  name="manufacturer"
                   type="text"
-                  placeholder="Masa..."
+                  placeholder="Productor..."
                 />
-                <span title={mass ? mass : 'Ingresá los nuevos datos'}>
+                <span title={manufacturer ? manufacturer : 'Ingresá los nuevos datos'}>
                   <i
                     className={
-                      mass
+                      manufacturer
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -96,17 +87,17 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="hair_color"
-                  name="hair_color"
+                  id="cost_in_credits"
+                  name="cost_in_credits"
                   type="text"
-                  placeholder="Color del pelo..."
+                  placeholder="Costo..."
                 />
                 <span
-                  title={hair_color ? hair_color : 'Ingresá los nuevos datos'}
+                  title={cost_in_credits ? cost_in_credits : 'Ingresá los nuevos datos'}
                 >
                   <i
                     className={
-                      hair_color
+                      cost_in_credits
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -116,17 +107,17 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="skin_color"
-                  name="skin_color"
+                  id="crew"
+                  name="crew"
                   type="text"
-                  placeholder="Color del skin..."
+                  placeholder="Equipo..."
                 />
                 <span
-                  title={skin_color ? skin_color : 'Ingresá los nuevos datos'}
+                  title={crew ? crew : 'Ingresá los nuevos datos'}
                 >
                   <i
                     className={
-                      skin_color
+                      crew
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -136,17 +127,17 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="eye_color"
-                  name="eye_color"
+                  id="passengers"
+                  name="passengers"
                   type="text"
-                  placeholder="Color de ojo..."
+                  placeholder="Pasajeros..."
                 />
                 <span
-                  title={eye_color ? eye_color : 'Ingresá los nuevos datos'}
+                  title={passengers ? passengers : 'Ingresá los nuevos datos'}
                 >
                   <i
                     className={
-                      eye_color
+                      passengers
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -156,17 +147,17 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="birth_year"
-                  name="birth_year"
+                  id="cargo_capacity"
+                  name="cargo_capacity"
                   type="text"
-                  placeholder="Fecha de nacimiento..."
+                  placeholder="Capacidad de carga..."
                 />
                 <span
-                  title={birth_year ? birth_year : 'Ingresá los nuevos datos'}
+                  title={cargo_capacity ? cargo_capacity : 'Ingresá los nuevos datos'}
                 >
                   <i
                     className={
-                      birth_year
+                      cargo_capacity
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -176,15 +167,15 @@ const CharacterFormEdit = () => {
               <div className="input-field-container">
                 <Field
                   className="input-field-data"
-                  id="gender"
-                  name="gender"
+                  id="vehicle_class"
+                  name="vehicle_class"
                   type="text"
-                  placeholder="Sexo..."
+                  placeholder="Clase del vehículo..."
                 />
-                <span title={gender ? gender : 'Ingresá los nuevos datos'}>
+                <span title={vehicle_class ? vehicle_class : 'Ingresá los nuevos datos'}>
                   <i
                     className={
-                      gender
+                      vehicle_class
                         ? 'fas fa-info field-warning'
                         : 'fas fa-info field-correct'
                     }
@@ -205,4 +196,4 @@ const CharacterFormEdit = () => {
   );
 };
 
-export default CharacterFormEdit;
+export default VehicleFormEdit;
