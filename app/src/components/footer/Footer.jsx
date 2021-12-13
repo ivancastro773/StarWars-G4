@@ -9,17 +9,17 @@ const Footer = () => {
           <h3> Follow Star Wars</h3>
           <div className="link-social">
             <p>
-              <a href="!#">
+              <a href="https://www.facebook.com/starwarsla/?brand_redir=169299103121699" target={'_blank'}>
                 <i className="fab hola fa-facebook fa-3x"></i>
               </a>
             </p>
             <p>
-              <a href="!#">
+              <a href="https://www.instagram.com/starwars/" target={'_blank'}>
                 <i className="fab fa-instagram hola fa-3x"></i>
               </a>
             </p>
             <p>
-              <a href="!#">
+              <a href="https://twitter.com/starwars?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target={'_blank'}>
                 <i className="fab fa-twitter hola fa-3x"></i>
               </a>
             </p>
