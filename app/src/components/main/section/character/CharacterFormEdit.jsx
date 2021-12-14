@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 
+//import { AxiosRequest } from '../../../helpers/axios-request';
 import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
+import Loader from '../loader/Loader';
 
-const CharacterFormEdit = ({ values, setInfo }) => {
-  const initialValues = { ...values };
-  const handleSubmit = (values) => {
-    Toast('Edit complete', 'success');
-    setInfo(true);
+const CharacterFormEdit = ({ character, setInfo }) => {
+  const [editing, setEditing] = useState(false);
+  const navigate = useNavigate();
+  const initialValues = { ...character };
+  const handleSubmit = async (values) => {
+    setEditing(true);
+    setTimeout(() => {
+      setEditing(false);
+      Toast('Edit complete', 'success');
+      setInfo(true);
+      setTimeout(() => navigate('/characters'), 3000);
+    }, 3000);
+    /*
+    // send the new values to the server
+    try {
+      const { status, data } = await AxiosRequest({ url: '' });
+      if (status === 200) {}
+    } catch (error) {
+      return Toast('Something bad happen', 'error');
+    }
+    */
   };
   return (
     <Formik
@@ -182,12 +201,25 @@ const CharacterFormEdit = ({ values, setInfo }) => {
                   ></i>
                 </span>
               </div>
-              <button
-                type="submit"
-                className="btn-action confirm-edit btn-edit-chac"
-              >
-                Confirmar
-              </button>
+              {editing ? (
+                <div>
+                  <button
+                    type="submit"
+                    className="btn-action confirm-edit btn-edit-chac"
+                    disabled={true}
+                  >
+                    Editing
+                  </button>
+                  <Loader className="edition-loader" />
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="btn-action confirm-edit btn-edit-chac"
+                >
+                  Confirm
+                </button>
+              )}
             </Form>
           </div>
         );

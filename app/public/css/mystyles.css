@@ -370,6 +370,16 @@
   color: #f00 !important;
 }
 
+.invalid-page {
+  padding: 30px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* animations */
 @-webkit-keyframes sliderfade {
   from {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
-import Character from '../character/Character';
+import CharacterProfile from '../character/CharacterProfile';
 import Loader from '../loader/Loader';
 
 function CharactersPage() {
@@ -52,7 +52,7 @@ function CharactersPage() {
           <Loader />
         ) : (
           characters.map((character, i) => (
-            <Character key={i} character={character} id={i} />
+            <CharacterProfile key={i} character={character} />
           ))
         )}
       </div>

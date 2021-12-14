@@ -1,11 +1,7 @@
 import React from 'react';
 
-const CharacterData = ({ character, setPermission, setInfo, id }) => {
-  const fnChangeEdit = (e) => {
-    const { target } = e;
-    const { dataset } = target;
-    const { identify } = dataset;
-    setPermission(Number(identify));
+const CharacterData = ({ character, setInfo }) => {
+  const fnChangeEdit = () => {
     setInfo(false);
   };
   return (
@@ -36,17 +32,12 @@ const CharacterData = ({ character, setPermission, setInfo, id }) => {
           <i className="fas fa-jedi"> </i> Sexo: {character.gender}
         </li>
       </ul>
-      <div className="img-planet-container">
-        <img src="img/planet.jpg" className="img-planet" alt="planet" />
-      </div>
       <button
         type="button"
         className="btn-action start-edit btn-edit-chac"
-        value={id}
-        data-identify={id}
         onClick={fnChangeEdit}
       >
-        Editar
+        Edit
       </button>
     </div>
   );
