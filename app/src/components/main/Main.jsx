@@ -8,6 +8,7 @@ import Character from './section/character/Character';
 import Home from './section/Home';
 import VehiclesPage from './section/pages/VehiclesPage';
 import InvalidPage from './section/error/InvalidPage';
+import CharacterAdd from './section/character/CharacterAdd';
 
 function Main() {
   return (
@@ -61,6 +62,15 @@ function Main() {
           path="*"
           element={
             <InvalidPage />
+          }
+        />
+        <Route 
+          exact
+          path="character-add"
+          element={
+            <PrivateRoute logged={true}>
+              <CharacterAdd />
+            </PrivateRoute>
           }
         />
       </Routes>

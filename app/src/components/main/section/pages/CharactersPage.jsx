@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
@@ -48,6 +49,14 @@ function CharactersPage() {
   return (
     <>
       <div className="container-cards container-card-character">
+        <div className="add-character">
+          <Link to="/character-add">
+            <i
+              className="fas fa-plus-circle fa-3x add-charac-icon"
+              title="Add a new character"
+            ></i>
+          </Link>
+        </div>
         {characters.length === 0 ? (
           <Loader />
         ) : (

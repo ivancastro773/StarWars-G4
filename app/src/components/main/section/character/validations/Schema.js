@@ -5,7 +5,7 @@ const Schema = Yup.object().shape({
     height: Yup.string().required("La altura es requerida!"),
     mass: Yup.string().required("La masa es requerido!"),
     hair_color: Yup.string().required("El color de pelo es requerido!"),
-    skin_color: Yup.string().required("El color del skin es requerido!"),
+    skin_color: Yup.string().required("Estoy re loco!"),
     eye_color: Yup.string().required("El color de ojos es requerido!"),
     birth_year: Yup.string().required("La fecha de nacimiento es requerida!"),
     gender: Yup.string().required("El sexo es requerido!")

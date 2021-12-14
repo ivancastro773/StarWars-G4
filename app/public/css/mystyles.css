@@ -233,6 +233,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+  position: relative;
 }
 
 .container-card-character {
@@ -247,7 +248,32 @@
 .container-card-vehicle {
   background-attachment: fixed;
   background-position: center;
-  padding: 20px 0;
+  padding: 60px 0 50px 0;
+}
+
+/* CHARACTER ADD */
+.add-character{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.4);
+  width: 100%;
+}
+.add-charac-icon{
+  color: #0f0;
+  transition: all .2s ease;
+}
+.add-charac-icon:hover{
+  color: red;
+}
+.container-card-chac-add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .card-box-character,
@@ -513,7 +539,7 @@
 
 @media only screen and (min-width: 1440px) {
   .carrousel-slider {
-    height: 500px;
+    height: calc(100vh - 80px);
   }
   .movie-card-container {
     width: 800px;
