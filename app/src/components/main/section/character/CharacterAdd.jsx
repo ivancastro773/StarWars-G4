@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 //components
 import CharacterFormEdit from './CharacterFormEdit';
 
-
-const CharacterAdd = ({character}) => {
+const CharacterAdd = ({ character }) => {
   const [info, setInfo] = useState(true);
 
   return (
     <>
-      <div className="container-card-chac-add">
+      <div className="container-cards container-card-character">
         <div className="card-box-character">
           <div className="img-character">
             <img

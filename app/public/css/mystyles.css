@@ -237,6 +237,7 @@
 .add-character{
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
   margin-right: 30px;
 }
 .add-charac-icon{
