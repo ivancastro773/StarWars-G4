@@ -26,8 +26,7 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
       setInfo(true);
       setTimeout(() => navigate('/characters'), 3000);
     }, 3000);
-  };
-  /*
+    /*
     // send the new values to the server
     try {
       const { status, data } = await AxiosRequest({ url: '' });
@@ -36,6 +35,7 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
       return Toast('Something bad happen', 'error');
     }
   */
+  };
   return (
     <Formik
       initialValues={initialValues}

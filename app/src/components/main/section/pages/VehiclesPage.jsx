@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
-import Vehicle from '../vehicle/Vehicle';
 import Loader from '../loader/Loader';
+import VehicleProfile from '../vehicle/VehicleProfile';
 
 function VehiclesPage() {
   const [vehicles, setVehicles] = useState([]);
-  const [apiurl, setApiUrl] = useState('https://swapi.dev/api/vehicles/?page=1');
+  const [apiurl, setApiUrl] = useState(
+    'https://swapi.py4e.com/api/vehicles/?page=1'
+  );
   const [prevpage, setPrevpage] = useState('');
   const [nextpage, setNextpage] = useState('');
 
@@ -48,11 +51,19 @@ function VehiclesPage() {
   return (
     <>
       <div className="container-cards container-card-vehicle">
+        <div className="add-vehicle">
+          <Link to="/vehicle-add">
+            <i
+              className="fas fa-plus-circle fa-3x add-vehicle-icon"
+              title="Add a new vehicle"
+            ></i>
+          </Link>
+        </div>
         {vehicles.length === 0 ? (
           <Loader />
         ) : (
           vehicles.map((vehicle, i) => (
-            <Vehicle key={i} vehicle={vehicle} id={i} />
+            <VehicleProfile key={i} vehicle={vehicle} />
           ))
         )}
       </div>

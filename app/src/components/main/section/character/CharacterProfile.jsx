@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Character = ({ character }) => {
+const CharacterProfile = ({ character }) => {
   const navigate = useNavigate();
   const handleEditCharacter = () => {
     navigate('/characters/edit', {
@@ -58,4 +58,4 @@ const Character = ({ character }) => {
   );
 };
 
-export default Character;
+export default CharacterProfile;

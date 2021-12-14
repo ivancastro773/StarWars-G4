@@ -1,11 +1,7 @@
 import React from 'react';
 
-const VehicleData = ({ vehicle, setPermission, setInfo, id }) => {
-  const fnChangeEdit = (e) => {
-    const { target } = e;
-    const { dataset } = target;
-    const { identify } = dataset;
-    setPermission(Number(identify));
+const VehicleData = ({ vehicle, setInfo }) => {
+  const fnChangeEdit = () => {
     setInfo(false);
   };
   return (
@@ -36,16 +32,14 @@ const VehicleData = ({ vehicle, setPermission, setInfo, id }) => {
         </li>
       </ul>
       <div className="img-planet-container">
-        <img src="img/vehicles/vehicle2.jpg" className="img-planet" alt="vehicle" />
+        <img src="/img/vehicles/vehicle2.jpg" className="img-planet" alt="vehicle" />
       </div>
       <button
         type="button"
         className="btn-action start-edit btn-edit-chac"
-        value={id}
-        data-identify={id}
         onClick={fnChangeEdit}
       >
-        Editar
+        Edit
       </button>
     </div>
   );
