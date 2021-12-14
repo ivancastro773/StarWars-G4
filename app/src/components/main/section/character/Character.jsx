@@ -1,25 +1,33 @@
-import React from 'react';
-import './character.css';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import InvalidPage from '../error/InvalidPage';
+
+import CharacterData from './CharacterData';
+import CharacterFormEdit from './CharacterFormEdit';
+
 const Character = () => {
+  const [info, setInfo] = useState(true);
+  const { state } = useLocation();
+  if (!state) {
+    return <InvalidPage />
+  }
+  const { character = {} } = state;
   return (
     <>
-      <div className="container-cards-character">
-        <div>
-          <div>
-            <div className="card-character">
-              <div className="text-character">
-                <h3 className="title-character">Luke Skywalker</h3>
-                <ul className="text-description">
-                  <li>altura</li>
-                  <li>masa</li>
-                </ul>
-                <p className="title-character">planeta</p>
-              </div>
-            </div>
+      <div className="container-cards container-card-character">
+        <div className="card-box-character">
+          <div className="img-character">
+            <img
+              src="/img/characters/portrait.png"
+              className="img-style-chac"
+              alt="character"
+            />
           </div>
-          <div>
-            <button className="btn-edit-character">EDITAR</button>
-          </div>
+          {info ? (
+            <CharacterData character={character} setInfo={setInfo} />
+          ) : (
+            <CharacterFormEdit character={character} setInfo={setInfo} />
+          )}
         </div>
       </div>
     </>

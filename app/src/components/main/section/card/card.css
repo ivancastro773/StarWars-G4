@@ -1,33 +1,29 @@
-.container-footer{
+.container-card {
     display: flex;
     flex-direction: column;
-    height: 200px;
-    justify-content: center;
-    background: black;
+    height: 400px;
     background-size: cover;
     background-position: center;
     background-color: rgba(0, 23, 98, 0.5);
     background-blend-mode: overlay;
-    background-image: url(./footer.jpg);
+    background-image: url(./allcharacters.jpg);
 }
-.hola:hover{
-    color: red;
-}
-.hola{
+
+.container-card>h4 {
+    font-size: xx-large;
     color: white;
-}
-.desc-footer{
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: 5rem;
 }
-.link-social{
-    display: flex;
-    gap: 1rem;
-}
-.tags-footer{
-    display: flex;
+
+.container-card>p {
+    color: white;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;
+    text-align: center;
+    height: 5rem;
+    font-size: large;
 }

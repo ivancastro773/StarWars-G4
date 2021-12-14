@@ -3,8 +3,12 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoute from '../../routes/PrivateRoute';
 
 import CharactersPage from './section/pages/CharactersPage';
+import Character from './section/character/Character';
+/* import Vehicle from './section/vehicle/Vehicle'; */
 import Home from './section/Home';
 import VehiclesPage from './section/pages/VehiclesPage';
+import InvalidPage from './section/error/InvalidPage';
+import CharacterAdd from './section/character/CharacterAdd';
 
 function Main() {
   return (
@@ -18,7 +22,7 @@ function Main() {
             </PrivateRoute>
           }
         />
-        <Route 
+        <Route
           exact
           path="vehicles"
           element={
@@ -27,12 +31,45 @@ function Main() {
             </PrivateRoute>
           }
         />
-        <Route 
+        {/* <Route
+          exact
+          path="vehicles/edit"
+          element={
+            <PrivateRoute logged={true}>
+              <Vehicle />
+            </PrivateRoute>
+          }
+        /> */}
+        <Route
           exact
           path="characters"
           element={
             <PrivateRoute logged={true}>
               <CharactersPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="characters/edit"
+          element={
+            <PrivateRoute logged={true}>
+              <Character />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <InvalidPage />
+          }
+        />
+        <Route 
+          exact
+          path="character-add"
+          element={
+            <PrivateRoute logged={true}>
+              <CharacterAdd />
             </PrivateRoute>
           }
         />

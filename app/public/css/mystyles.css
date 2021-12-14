@@ -1,5 +1,5 @@
 /* @font-face {
-  font-family: StarJedi;
+  font-family: StarWars;
   src: url(../fonts/StarJedi-DGRW.ttf) format('truetype');
 } */
 
@@ -17,14 +17,30 @@
 
 /* carrousel */
 .carrousel-slider {
-  min-height: 400px;
+  height: calc(100vh - 80px);
   max-width: 100%;
   overflow: hidden;
 }
 
 .carrousel-container {
-	width: 100%;
+  width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.star-quotes {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 150px;
+  background-color: rgba(0,0,0,0.6);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slideshow-container {
@@ -34,13 +50,13 @@
 }
 
 .my-slides {
-  height: 400px;
+  height: 100%;
 }
 
 .img-carrousel {
-	height: 100%;
+  height: 100%;
   width: 100%;
-	object-fit: cover;
+  object-fit: cover;
 }
 
 /* Next & previous buttons */
@@ -65,7 +81,7 @@
 .btn-slider-next {
   width: auto;
   margin-top: -22px;
-  top: 50%
+  top: 50%;
 }
 
 .movie-slider-prev,
@@ -85,12 +101,12 @@
 /* On hover, add a black background color with a little bit see-through */
 .btn-slider-prev:hover,
 .btn-slider-next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .movie-slider-prev:hover,
 .movie-slider-next:hover {
-  background-color: rgba(0,0,0,0.95);
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 /* Fading animation */
@@ -115,9 +131,9 @@
 }
 
 .movie-card-container {
-  background-color: rgba(11,11,11,0.5);
+  background-color: rgba(11, 11, 11, 0.5);
   margin: 0 auto;
-  border-bottom: 4px solid rgba(12, 231, 59,0.5);
+  border-bottom: 4px solid rgba(12, 231, 59, 0.5);
   overflow: hidden;
 }
 
@@ -136,25 +152,313 @@
   align-items: center;
 }
 
+/* loader component */
+.characters-loader {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+/* paginator */
+.paginator-container {
+  height: 80px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.btn-paginator {
+  padding: 14px 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  border: 2px solid transparent;
+  color: #fff;
+}
+
+.btn-paginator-prev {
+  border-bottom: 2px solid green;
+}
+
+.btn-paginator-next {
+  border-bottom: 2px solid red;
+}
+
+/* character, vehicles component */
+.container-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+}
+
+.container-card-character {
+  background: url(../img/backChacOne.jpg) no-repeat;
+}
+
+.container-card-vehicle {
+  background: url(../img/vehicles/vehicle2.jpg) no-repeat;
+}
+
+.container-card-character,
+.container-card-vehicle {
+  background-attachment: fixed;
+  background-position: center;
+  padding: 60px 0 50px 0;
+}
+
+/* CHARACTER ADD */
+.add-character{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.4);
+  width: 100%;
+}
+.add-charac-icon{
+  color: #0f0;
+  transition: all .2s ease;
+}
+.add-charac-icon:hover{
+  color: red;
+}
+.container-card-chac-add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card-box-character,
+.card-box-vehicle {
+  display: flex;
+  border-radius: 15px;
+}
+
+.line {
+  border-top: 2px solid green;
+  border-radius: 100%;
+  width: 50%;
+  height: 50px;
+}
+
+.img-style-chac,
+.img-style-vehicle {
+  object-fit: cover;
+}
+
+.description-chac {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(230, 230, 230, 1);
+  color: rgba(0, 0, 0, 1);
+  padding: 0 14px;
+}
+
+.form-character-edit {
+  margin-top: 5px;
+}
+
+.data-list {
+  list-style: none;
+}
+
+.img-planet {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-action {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  background-color: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-edit-chac {
+  margin: 15px;
+}
+
+.start-edit {
+  border-bottom: 2px solid rgba(255, 0, 0, 0.8);
+}
+
+.confirm-edit {
+  border-bottom: 2px solid rgba(0, 128, 0, 0.8);
+}
+
+.start-edit:hover {
+  border-bottom: 2px solid rgba(255, 0, 0, 1);
+}
+
+.confirm-edit:hover {
+  border-bottom: 2px solid rgba(0, 128, 0, 1);
+}
+
+.form-edit-character,
+.form-edit-vehicle {
+  text-align: center;
+  width: 100%;
+}
+
+.input-field-container {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 4px;
+}
+
+.input-field-container:last-child {
+  margin-bottom: 0;
+}
+
+.input-field-data {
+  width: 85%;
+  border: none;
+}
+
+.input-field-data:focus-visible {
+  outline: none;
+  border: none;
+}
+
+.input-field-container > span {
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.input-field-container > span i {
+  color: #444;
+}
+
+.field-correct {
+  color: #0f0 !important;
+}
+
+.field-warning {
+  color: #f00 !important;
+}
+
+.invalid-page {
+  padding: 30px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* animations */
 @-webkit-keyframes sliderfade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes sliderfade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* media queries */
+@media only screen and (max-width: 767.98px) {
+  .card-box-character,
+  .card-box-vehicle {
+    width: 400px;
+    flex-direction: column;
+  }
+  .description-chac {
+    height: 500px;
+  }
+  .img-character,
+  .img-vehicle {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+  }
+  .img-style-chac,
+  .img-style-vehicle {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+  }
+}
+
 @media only screen and (max-width: 575.98px) {
   .movie-image {
     height: 400px;
   }
+  .movie-info {
+    text-align: center;
+  }
   .movie-card-container {
     width: 70%;
-    background-color: rgba(11,11,11,0.2);
+    background-color: rgba(11, 11, 11, 0.2);
   }
   .img-fluid {
     object-fit: contain;
@@ -178,6 +482,50 @@
   .movies-gallery {
     height: 410px;
   }
+  /* character, vehicle component */
+  .card-box-character,
+  .card-box-vehicle {
+    width: 400px;
+    flex-direction: column;
+  }
+  .description-chac {
+    height: 500px;
+  }
+  .img-character,
+  .img-vehicle {
+    width: 100%;
+    height: 50%;
+    text-align: center;
+  }
+  .img-style-chac,
+  .img-style-vehicle {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  /* character component */
+  .card-box-character,
+  .card-box-vehicle {
+    width: 600px;
+    height: 500px;
+  }
+  .img-character,
+  .img-vehicle {
+    width: 40%;
+  }
+  .description-chac {
+    width: 60%;
+    border-radius: 0 15px 15px 0;
+  }
+  .img-style-chac,
+  .img-style-vehicle {
+    border-radius: 15px 0 0 15px;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1439.98px) {
@@ -191,7 +539,7 @@
 
 @media only screen and (min-width: 1440px) {
   .carrousel-slider {
-    height: 500px;
+    height: calc(100vh - 80px);
   }
   .movie-card-container {
     width: 800px;
