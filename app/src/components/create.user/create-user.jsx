@@ -20,8 +20,11 @@ function CreateUser() {
         <br />
         <input type="password" placeholder='Password'/>
         <br/>
+        <label>Password confirm</label>
         <br />
-        <button><Link to='Login'>Create</Link></button>
+        <input type="password" placeholder='Password'/>
+        <br />
+        <button><Link to='/login'>Create</Link></button>
       </form>
       </div>
     </div>
