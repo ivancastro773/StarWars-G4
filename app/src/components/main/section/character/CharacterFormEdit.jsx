@@ -27,14 +27,13 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
       setTimeout(() => navigate('/characters'), 3000);
     }, 3000);
     /*
-    // send the new values to the server
     try {
-      const { status, data } = await AxiosRequest({ url: '' });
+      const { status, data } = await AxiosRequest({ url: '/' });
       if (status === 200) {}
     } catch (error) {
       return Toast('Something bad happen', 'error');
     }
-  */
+    */
   };
   return (
     <Formik
@@ -62,14 +61,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="Nombre..."
+                  placeholder="Name"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="name"
                   component={ShowError}
                 />
-                <span title={name ? name : 'Ingresá los nuevos datos'}>
+                <span title={name ? name : 'Complete the field'}>
                   <i
                     className={
                       name
@@ -85,14 +84,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="height"
                   name="height"
                   type="text"
-                  placeholder="Altura..."
+                  placeholder="Height"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="height"
                   component={ShowError}
                 />
-                <span title={height ? height : 'Ingresá los nuevos datos'}>
+                <span title={height ? height : 'Complete the field'}>
                   <i
                     className={
                       height
@@ -108,14 +107,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="mass"
                   name="mass"
                   type="text"
-                  placeholder="Masa..."
+                  placeholder="Mass"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="mass"
                   component={ShowError}
                 />
-                <span title={mass ? mass : 'Ingresá los nuevos datos'}>
+                <span title={mass ? mass : 'Complete the field'}>
                   <i
                     className={
                       mass
@@ -131,16 +130,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="hair_color"
                   name="hair_color"
                   type="text"
-                  placeholder="Color del pelo..."
+                  placeholder="Hair color"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="hair_color"
                   component={ShowError}
                 />
-                <span
-                  title={hair_color ? hair_color : 'Ingresá los nuevos datos'}
-                >
+                <span title={hair_color ? hair_color : 'Complete the field'}>
                   <i
                     className={
                       hair_color
@@ -156,16 +153,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="skin_color"
                   name="skin_color"
                   type="text"
-                  placeholder="Color del skin..."
+                  placeholder="Skin color"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="skin_color"
                   component={ShowError}
                 />
-                <span
-                  title={skin_color ? skin_color : 'Ingresá los nuevos datos'}
-                >
+                <span title={skin_color ? skin_color : 'Complete the field'}>
                   <i
                     className={
                       skin_color
@@ -181,16 +176,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="eye_color"
                   name="eye_color"
                   type="text"
-                  placeholder="Color de ojo..."
+                  placeholder="Eye color"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="eye_color"
                   component={ShowError}
                 />
-                <span
-                  title={eye_color ? eye_color : 'Ingresá los nuevos datos'}
-                >
+                <span title={eye_color ? eye_color : 'Complete the field'}>
                   <i
                     className={
                       eye_color
@@ -206,16 +199,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="birth_year"
                   name="birth_year"
                   type="text"
-                  placeholder="Fecha de nacimiento..."
+                  placeholder="Birth year"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="birth_year"
                   component={ShowError}
                 />
-                <span
-                  title={birth_year ? birth_year : 'Ingresá los nuevos datos'}
-                >
+                <span title={birth_year ? birth_year : 'Complete the field'}>
                   <i
                     className={
                       birth_year
@@ -231,14 +222,14 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
                   id="gender"
                   name="gender"
                   type="text"
-                  placeholder="Sexo..."
+                  placeholder="Gender"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="gender"
                   component={ShowError}
                 />
-                <span title={gender ? gender : 'Ingresá los nuevos datos'}>
+                <span title={gender ? gender : 'Complete the field'}>
                   <i
                     className={
                       gender

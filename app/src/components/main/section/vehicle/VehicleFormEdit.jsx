@@ -26,14 +26,13 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
       setTimeout(() => navigate('/vehicles'), 3000);
     }, 3000);
     /*
-    // send the new values to the server
     try {
-      const { status, data } = await AxiosRequest({ url: '' });
+      const { status, data } = await AxiosRequest({ url: '/' });
       if (status === 200) {}
     } catch (error) {
       return Toast('Something bad happen', 'error');
     }
-  */
+   */
   };
   return (
     <Formik
@@ -61,14 +60,14 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="Nombre..."
+                  placeholder="Name"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="name"
                   component={ShowError}
                 />
-                <span title={name ? name : 'Ingresá los nuevos datos'}>
+                <span title={name ? name : 'Complete the field'}>
                   <i
                     className={
                       name
@@ -84,14 +83,14 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="model"
                   name="model"
                   type="text"
-                  placeholder="Modelo..."
+                  placeholder="Model"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="model"
                   component={ShowError}
                 />
-                <span title={model ? model : 'Ingresá los nuevos datos'}>
+                <span title={model ? model : 'Complete the field'}>
                   <i
                     className={
                       model
@@ -107,7 +106,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="manufacturer"
                   name="manufacturer"
                   type="text"
-                  placeholder="Productor..."
+                  placeholder="Manufacturer"
                 />
                 <ErrorMessage
                   className="required-validation"
@@ -116,7 +115,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                 />
                 <span
                   title={
-                    manufacturer ? manufacturer : 'Ingresá los nuevos datos'
+                    manufacturer ? manufacturer : 'Complete the field'
                   }
                 >
                   <i
@@ -134,7 +133,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="cost_in_credits"
                   name="cost_in_credits"
                   type="text"
-                  placeholder="Costo..."
+                  placeholder="Cost"
                 />
                 <ErrorMessage
                   className="required-validation"
@@ -145,7 +144,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   title={
                     cost_in_credits
                       ? cost_in_credits
-                      : 'Ingresá los nuevos datos'
+                      : 'Complete the field'
                   }
                 >
                   <i
@@ -163,14 +162,14 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="crew"
                   name="crew"
                   type="text"
-                  placeholder="Equipo..."
+                  placeholder="Crew"
                 />
                 <ErrorMessage
                   className="required-validation"
                   name="crew"
                   component={ShowError}
                 />
-                <span title={crew ? crew : 'Ingresá los nuevos datos'}>
+                <span title={crew ? crew : 'Complete the field'}>
                   <i
                     className={
                       crew
@@ -186,7 +185,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="passengers"
                   name="passengers"
                   type="text"
-                  placeholder="Pasajeros..."
+                  placeholder="Passenger"
                 />
                 <ErrorMessage
                   className="required-validation"
@@ -194,7 +193,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   component={ShowError}
                 />
                 <span
-                  title={passengers ? passengers : 'Ingresá los nuevos datos'}
+                  title={passengers ? passengers : 'Complete the field'}
                 >
                   <i
                     className={
@@ -211,7 +210,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="cargo_capacity"
                   name="cargo_capacity"
                   type="text"
-                  placeholder="Capacidad de carga..."
+                  placeholder="Cargo capacity"
                 />
                 <ErrorMessage
                   className="required-validation"
@@ -220,7 +219,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                 />
                 <span
                   title={
-                    cargo_capacity ? cargo_capacity : 'Ingresá los nuevos datos'
+                    cargo_capacity ? cargo_capacity : 'Complete the field'
                   }
                 >
                   <i
@@ -238,7 +237,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   id="vehicle_class"
                   name="vehicle_class"
                   type="text"
-                  placeholder="Clase del vehículo..."
+                  placeholder="Vehicle class"
                 />
                 <ErrorMessage
                   className="required-validation"
@@ -247,7 +246,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                 />
                 <span
                   title={
-                    vehicle_class ? vehicle_class : 'Ingresá los nuevos datos'
+                    vehicle_class ? vehicle_class : 'Complete the field'
                   }
                 >
                   <i

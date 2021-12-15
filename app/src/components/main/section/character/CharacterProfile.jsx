@@ -27,22 +27,25 @@ const CharacterProfile = ({ character }) => {
           <div className="line"></div>
           <ul className="data-list">
             <li>
-              <i className="fas fa-jedi"></i> Altura: {character.height}
+              <i className="fas fa-jedi"></i> Height: {character.height}
             </li>
             <li>
-              <i className="fas fa-jedi"></i> Masa: {character.mass}
+              <i className="fas fa-jedi"></i> Mass: {character.mass}
             </li>
             <li>
-              <i className="fas fa-jedi"></i> Color del skin:{' '}
-              {character.skin_color}
+              <i className="fas fa-jedi"></i> Hair color: {character.hair_color}
             </li>
             <li>
-              <i className="fas fa-jedi"></i> Color de ojo:{' '}
-              {character.eye_color}
+              <i className="fas fa-jedi"></i> Skin color: {character.skin_color}
             </li>
             <li>
-              <i className="fas fa-jedi"></i> Fecha de nacimiento:{' '}
-              {character.birth_year}
+              <i className="fas fa-jedi"></i> Eye color: {character.eye_color}
+            </li>
+            <li>
+              <i className="fas fa-jedi"></i> Birth year: {character.birth_year}
+            </li>
+            <li>
+              <i className="fas fa-jedi"> </i> Gender: {character.gender}
             </li>
           </ul>
           <button
