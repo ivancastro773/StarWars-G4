@@ -7,23 +7,46 @@
     background-color: rgba(0, 23, 98, 0.5);
     background-blend-mode: overlay;
     background-image: url(./allcharacters.jpg);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .container-card>h4 {
     font-size: xx-large;
     color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     height: 5rem;
 }
 
 .container-card>p {
     color: white;
+    height: 5rem;
+    font-size: large;
+}
+
+.container-card button {
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 5rem;
-    font-size: large;
+    height: fit-content;
+    width: fit-content;
+    color: #0099CC;
+    background: transparent;
+    border-radius: 6px;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.container-card button:hover {
+    background-color: #008CBA;
+    color: white;
 }

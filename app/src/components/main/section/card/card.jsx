@@ -8,7 +8,8 @@ const card = () => {
         <h4>Meet our characters</h4>
 
         <p>Are you ready to meet the most famous characters in the filmographic world and all their characteristics?</p>
-        <p>Clicking <button><Link to = "characters"> here</Link></button> you can discover what we have prepared for you...</p>
+        <p>Clicking the button below you can discover what we have prepared for you...</p>
+        <button><Link to = "characters"> Characters</Link></button>
     </div>
   );
 };
