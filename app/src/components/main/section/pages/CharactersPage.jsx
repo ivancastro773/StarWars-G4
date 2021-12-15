@@ -8,7 +8,9 @@ import Loader from '../loader/Loader';
 
 function CharactersPage() {
   const [characters, setCharacters] = useState([]);
-  const [apiurl, setApiUrl] = useState('https://swapi.dev/api/people/?page=1');
+  const [apiurl, setApiUrl] = useState(
+    'https://swapi.py4e.com/api/people/?page=1'
+  );
   const [prevpage, setPrevpage] = useState('');
   const [nextpage, setNextpage] = useState('');
 

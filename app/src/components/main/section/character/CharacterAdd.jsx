@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-//components
+import { useState } from 'react';
 import CharacterFormEdit from './CharacterFormEdit';
 
-const CharacterAdd = ({ character }) => {
+const CharacterAdd = () => {
   const [info, setInfo] = useState(true);
 
   return (
@@ -11,7 +10,7 @@ const CharacterAdd = ({ character }) => {
         <div className="card-box-character">
           <div className="img-character">
             <img
-              src="img/characters/portrait.png"
+              src="/img/characters/portrait.png"
               className="img-style-chac"
               alt=""
             />

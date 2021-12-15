@@ -5,6 +5,7 @@ const defaultData = {
   url: '',
   data: {},
   headers: {},
+  params: {},
   timeout: 5000,
 };
 
@@ -21,6 +22,10 @@ const defaultData = {
  */
 export const AxiosRequest = async (opts = defaultData, ...rest) => {
   try {
+    /* const baseURL = 'https://starwarsapig4.herokuapp.com';
+    const axiosInstance = axios.create({
+      baseURL,
+    }); */
     const { method, url, data, headers, timeout } = opts;
     const axiosresponse = await axios({
       method,

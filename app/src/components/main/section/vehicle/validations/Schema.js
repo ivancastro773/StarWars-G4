@@ -1,14 +1,14 @@
 import * as Yup from 'yup';
 
 const Schema = Yup.object().shape({
-  name: Yup.string().required('El nombre es requerido!'),
-  model: Yup.string().required('El modelo es requerido!'),
-  manufacturer: Yup.string().required('El productor es requerido!'),
-  cost_in_credits: Yup.string().required('El costo es requerido!'),
-  crew: Yup.string().required('El equipo es requerido!'),
-  passengers: Yup.string().required('El número de pasajeros es requerido!'),
-  cargo_capacity: Yup.string().required('La capacidad de carga es requerida!'),
-  vehicle_class: Yup.string().required('La clase del vehículo es requerida!'),
+  name: Yup.string().required('Name is required!'),
+  model: Yup.string().required('Model is required!'),
+  manufacturer: Yup.string().required('Manufacturer is required!'),
+  cost_in_credits: Yup.string().required('Cost is required!'),
+  crew: Yup.string().required('Crew number is required!'),
+  passengers: Yup.string().required('Passenger number is required!'),
+  cargo_capacity: Yup.string().required('Cargo capacity is required!'),
+  vehicle_class: Yup.string().required('Vehicle class is required!'),
 });
 
 export default Schema;
