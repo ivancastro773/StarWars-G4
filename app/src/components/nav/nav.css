@@ -192,7 +192,7 @@
   position: absolute;
   background-color: rgba(0,0,0,0.9);
   z-index: 20;
-  height: 400px;
+  height: calc(100vh - 80px);
   right: 0;
 }
 

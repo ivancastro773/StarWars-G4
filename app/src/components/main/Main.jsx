@@ -4,11 +4,12 @@ import PrivateRoute from '../../routes/PrivateRoute';
 
 import CharactersPage from './section/pages/CharactersPage';
 import Character from './section/character/Character';
-/* import Vehicle from './section/vehicle/Vehicle'; */
+import Vehicle from './section/vehicle/Vehicle';
 import Home from './section/Home';
 import VehiclesPage from './section/pages/VehiclesPage';
 import InvalidPage from './section/error/InvalidPage';
 import CharacterAdd from './section/character/CharacterAdd';
+import VehicleAdd from './section/vehicle/VehicleAdd';
 
 function Main() {
   return (
@@ -31,7 +32,7 @@ function Main() {
             </PrivateRoute>
           }
         />
-        {/* <Route
+        <Route
           exact
           path="vehicles/edit"
           element={
@@ -39,7 +40,16 @@ function Main() {
               <Vehicle />
             </PrivateRoute>
           }
-        /> */}
+        />
+        <Route 
+          exact
+          path="vehicle-add"
+          element={
+            <PrivateRoute logged={true}>
+              <VehicleAdd />
+            </PrivateRoute>
+          }
+        />
         <Route
           exact
           path="characters"
@@ -58,12 +68,6 @@ function Main() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="*"
-          element={
-            <InvalidPage />
-          }
-        />
         <Route 
           exact
           path="character-add"
@@ -71,6 +75,12 @@ function Main() {
             <PrivateRoute logged={true}>
               <CharacterAdd />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <InvalidPage />
           }
         />
       </Routes>

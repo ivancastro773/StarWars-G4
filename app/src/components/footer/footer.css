@@ -25,6 +25,7 @@
 .link-social{
     display: flex;
     gap: 1rem;
+    justify-content: space-between;
 }
 .tags-footer{
     display: flex;
