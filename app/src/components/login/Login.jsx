@@ -1,8 +1,11 @@
 import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+
+import './login.css';
 import { MainContext } from '../../context/MainContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import './login.css';
+import { AxiosRequest } from '../helpers/axios-request';
+import { Toast } from '../helpers/sweet-alert';
 
 function Login() {
   const [globalcontext, setGlobalContext] = useContext(MainContext);
@@ -15,27 +18,57 @@ function Login() {
     return <Navigate to="/" />;
   }
 
-  const handleLogin = () => {
-    setLogged(true);
-    const userData = {
-      name: 'norbix',
-      mail: 'norbix@mail.com',
-      role: 'admin',
-    };
-    setUserData(userData);
-    setGlobalContext((prevState) => {
-      return {
-        ...prevState,
-        logged: true,
-        user: userData,
-      };
-    });
+  // TODO: utilizar Formik para la validacion del formulario
+  const handleLogin = async () => {
+    try {
+      const response = await AxiosRequest({
+        url: '/auth/login',
+        method: 'POST',
+        data: {
+          email: '',
+          password: '',
+        },
+      });
+      if (response.status === 200) {
+        const userData = {
+          name: '',
+          mail: '',
+          role: '',
+        };
+        setLogged(true);
+        setUserData(userData);
+        setGlobalContext((prevState) => {
+          return {
+            ...prevState,
+            logged: true,
+            user: userData,
+          };
+        });
+        Toast('Login success', 'success');
+      }
+    } catch (error) {
+      return Toast('Something bad happen', 'error');
+    }
   };
 
   return (
     <div className="login-container">
-      <h2>LOGIN</h2>
-      <button onClick={handleLogin}>INGRESAR</button>
+      <div className="form-container">
+        <h2>Login</h2>
+        <form>
+          <label>User</label>
+          <br />
+          <input type="text" placeholder="User" />
+          <br />
+          <label>Password</label>
+          <br />
+          <input type="password" placeholder="Password" />
+          <br />
+          <br />
+          <button className="bt1">Sing in</button>
+          <button>Create user</button>
+        </form>
+      </div>
     </div>
   );
 }

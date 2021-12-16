@@ -1,6 +1,56 @@
-.signup-container {
+.create-container {
   width: 100%;
   height: 100vh;
-  background-color: aquamarine;
+  background-image: url(space-stars-min.jpg);
+  display: flex;
+  justify-content: center;
   text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.form-container {
+  background-color: black;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  padding: 50px;
+}
+
+.form-container>h2 {
+  font-size: xx-large;
+  font-family: var(--ff-starwars);
+}
+
+.form-container>form>button {
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid red;
+  background-color: black;
+}
+
+.form-container button:hover {
+  color: rgba(255, 255, 255, 1);
+  border-bottom: 2px solid green;
+}
+
+.form-container>form {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-container>form>input {
+  text-align: center;
+  align-content: center;
+}
+
+.form-container>label {
+  font-size: xx-large;
+  font-family: var(--ff-starwars);
+  text-align: center;
+  text-align: left;
 }
