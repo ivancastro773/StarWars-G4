@@ -1,33 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
 import CharacterProfile from '../character/CharacterProfile';
 import Loader from '../loader/Loader';
+import { MainContext } from '../../../../context/MainContext';
 
 function CharactersPage() {
+  const [globalcontext] = useContext(MainContext);
   const [characters, setCharacters] = useState([]);
-  const [apiurl, setApiUrl] = useState(
-    'https://swapi.py4e.com/api/people/?page=1'
-  );
-  const [prevpage, setPrevpage] = useState('');
-  const [nextpage, setNextpage] = useState('');
+  const [apiurl, ] = useState('/characters/all');
+  const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
 
   const handlePrevPageClick = () => {
-    if (prevpage !== null) {
-      goToTop();
-      setApiUrl(prevpage);
-    }
+    goToTop();
   };
 
   const handleNextPageClick = () => {
-    if (nextpage !== null) {
-      goToTop();
-      setApiUrl(nextpage);
-    }
+    goToTop();
   };
 
   useEffect(() => {
@@ -37,10 +30,7 @@ function CharactersPage() {
         if (status !== 200) {
           return Toast(msg, 'warning');
         }
-        const { results, previous, next } = data;
-        setPrevpage(previous);
-        setNextpage(next);
-        setCharacters(results);
+        setCharacters(data);
       } catch (error) {
         return Toast('Something bad happen', 'error');
       }
@@ -51,14 +41,16 @@ function CharactersPage() {
   return (
     <>
       <div className="container-cards container-card-character">
-        <div className="add-character">
-          <Link to="/character-add">
-            <i
-              className="fas fa-plus-circle fa-3x add-charac-icon"
-              title="Add a new character"
-            ></i>
-          </Link>
-        </div>
+        {logged && (
+          <div className="add-character">
+            <Link to="/characters/add">
+              <i
+                className="fas fa-plus-circle fa-3x add-charac-icon"
+                title="Add a new character"
+              ></i>
+            </Link>
+          </div>
+        )}
         {characters.length === 0 ? (
           <Loader />
         ) : (

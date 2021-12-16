@@ -22,12 +22,11 @@ const defaultData = {
  */
 export const AxiosRequest = async (opts = defaultData, ...rest) => {
   try {
-    /* const baseURL = 'https://starwarsapig4.herokuapp.com';
     const axiosInstance = axios.create({
-      baseURL,
-    }); */
+      baseURL: 'https://starwarsapig4.herokuapp.com',
+    });
     const { method, url, data, headers, timeout } = opts;
-    const axiosresponse = await axios({
+    const axiosresponse = await axiosInstance({
       method,
       url,
       data,

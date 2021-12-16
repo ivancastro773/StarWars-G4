@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { MainContext } from '../../context/MainContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import './login.css';
+import './signup.css';
 
-function Login() {
+function Signup() {
   const [globalcontext, setGlobalContext] = useContext(MainContext);
   const { logged, user } = globalcontext;
 
@@ -15,12 +15,12 @@ function Login() {
     return <Navigate to="/" />;
   }
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     setLogged(true);
     const userData = {
-      name: 'norbix',
-      mail: 'norbix@mail.com',
-      role: 'admin',
+      name: 'alexander',
+      mail: 'alexander@mail.com',
+      role: 'standard',
     };
     setUserData(userData);
     setGlobalContext((prevState) => {
@@ -33,11 +33,11 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h2>LOGIN</h2>
-      <button onClick={handleLogin}>INGRESAR</button>
+    <div className="signup-container">
+      <h2>SIGNUP</h2>
+      <button onClick={handleSignup}>SIGNUP</button>
     </div>
   );
 }
 
-export default Login;
+export default Signup;

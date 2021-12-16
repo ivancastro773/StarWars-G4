@@ -1,7 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-function PublicRoute({ children, logged = false }) {
-  // TODO: check localStorage or context for user validation
+function PublicRoute({ children, logged }) {
   return logged ? <Navigate to="/" /> : children;
 }
 

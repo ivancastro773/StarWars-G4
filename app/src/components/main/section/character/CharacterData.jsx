@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MainContext } from '../../../../context/MainContext';
+import { Toast } from '../../../helpers/sweet-alert';
 
 const CharacterData = ({ character, setInfo }) => {
+  const [ globalcontext ] = useContext(MainContext);
+  const { logged } = globalcontext;
+
   const fnChangeEdit = () => {
+    if (!logged) {
+      return Toast('You need to be logged', 'error');
+    }
     setInfo(false);
   };
   return (

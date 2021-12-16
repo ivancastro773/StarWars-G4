@@ -1,33 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Toast } from '../../../helpers/sweet-alert';
 import { AxiosRequest } from '../../../helpers/axios-request';
 import Loader from '../loader/Loader';
 import VehicleProfile from '../vehicle/VehicleProfile';
+import { MainContext } from '../../../../context/MainContext';
 
 function VehiclesPage() {
+  const [globalcontext] = useContext(MainContext);
   const [vehicles, setVehicles] = useState([]);
-  const [apiurl, setApiUrl] = useState(
-    'https://swapi.py4e.com/api/vehicles/?page=1'
-  );
-  const [prevpage, setPrevpage] = useState('');
-  const [nextpage, setNextpage] = useState('');
+  const [apiurl, ] = useState('/vehicles/all');
+  const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
 
   const handlePrevPageClick = () => {
-    if (prevpage !== null) {
-      goToTop();
-      setApiUrl(prevpage);
-    }
+    goToTop();
   };
 
   const handleNextPageClick = () => {
-    if (nextpage !== null) {
-      goToTop();
-      setApiUrl(nextpage);
-    }
+    goToTop();
   };
 
   useEffect(() => {
@@ -37,10 +30,7 @@ function VehiclesPage() {
         if (status !== 200) {
           return Toast(msg, 'warning');
         }
-        const { results, previous, next } = data;
-        setPrevpage(previous);
-        setNextpage(next);
-        setVehicles(results);
+        setVehicles(data);
       } catch (error) {
         return Toast('Something bad happen', 'error');
       }
@@ -51,14 +41,16 @@ function VehiclesPage() {
   return (
     <>
       <div className="container-cards container-card-vehicle">
-        <div className="add-vehicle">
-          <Link to="/vehicle-add">
-            <i
-              className="fas fa-plus-circle fa-3x add-vehicle-icon"
-              title="Add a new vehicle"
-            ></i>
-          </Link>
-        </div>
+        {logged && (
+          <div className="add-vehicle">
+            <Link to="/vehicles/add">
+              <i
+                className="fas fa-plus-circle fa-3x add-vehicle-icon"
+                title="Add a new vehicle"
+              ></i>
+            </Link>
+          </div>
+        )}
         {vehicles.length === 0 ? (
           <Loader />
         ) : (

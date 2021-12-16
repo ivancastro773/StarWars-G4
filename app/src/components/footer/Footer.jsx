@@ -27,9 +27,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="tags-footer">
-        <p>TERM OF USE |</p>
-        <p>Privacy Policy |</p>
-        <p>Star Wars at shopDisney |</p>
+        <p>TERM OF USE</p>
+        <p>Privacy Policy</p>
+        <p>Star Wars at shopDisney</p>
       </div>
     </div>
   );

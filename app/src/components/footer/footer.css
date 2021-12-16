@@ -32,3 +32,9 @@
     justify-content: center;
     gap: 1rem;
 }
+
+@media only screen and (max-width: 479.98px) {
+    .tags-footer > p {
+        font-size: 0.8rem;
+    }
+}

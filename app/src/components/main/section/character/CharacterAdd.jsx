@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { MainContext } from '../../../../context/MainContext';
+import InvalidPage from '../error/InvalidPage';
 import CharacterFormEdit from './CharacterFormEdit';
 
 const CharacterAdd = () => {
-  const [info, setInfo] = useState(true);
+  const [, setInfo] = useState(true);
+  const [globalcontext] = useContext(MainContext);
+  const { logged } = globalcontext;
+  if (!logged) {
+    return (
+      <InvalidPage>
+        <h2>You need to be logged to see this page.</h2>
+      </InvalidPage>
+    );
+  }
 
   return (
     <>
@@ -21,4 +32,5 @@ const CharacterAdd = () => {
     </>
   );
 };
+
 export default CharacterAdd;
