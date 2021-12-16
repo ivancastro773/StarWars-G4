@@ -4,7 +4,8 @@ function InvalidPage(props) {
       className="invalid-page"
       { ...props }
     >
-      <h2>Oh oh! Something bad happen</h2>
+      <h2>Oh oh! Something bad happen.</h2>
+      {props.children}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-/* import { AxiosRequest } from '../../../helpers/axios-request'; */
+import { AxiosRequest } from '../../../helpers/axios-request';
 import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
 import Loader from '../loader/Loader';
@@ -15,24 +15,37 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
   const btnAdd = btnAction === 'add';
   const handleSubmit = async (values) => {
     setEditing(true);
-    setTimeout(() => {
-      setEditing(false);
-      if (btnAdd) {
-        Toast('Add complete', 'success');
-      } else {
-        Toast('Edit complete', 'success');
-      }
-      setInfo(true);
-      setTimeout(() => navigate('/vehicles'), 3000);
-    }, 3000);
-    /*
+    const id = values.id;
+    delete values.id;
     try {
-      const { status, data } = await AxiosRequest({ url: '/' });
-      if (status === 200) {}
+      let status, responsePost, responsePut;
+      if (btnAdd) {
+        responsePost = await AxiosRequest({
+          method: 'POST',
+          url: `/vehicles/new`,
+          data: values,
+        });
+      } else {
+        responsePut = await AxiosRequest({
+          method: 'PUT',
+          url: `/vehicles/edit/${id}`,
+          data: values,
+        });
+      }
+      status = responsePost?.status || responsePut?.status;
+      if (status === 200) {
+        setEditing(false);
+        if (btnAdd) {
+          Toast('Add complete', 'success');
+        } else {
+          Toast('Edit complete', 'success');
+        }
+        setInfo(true);
+        setTimeout(() => navigate('/vehicles'), 2000);
+      }
     } catch (error) {
       return Toast('Something bad happen', 'error');
     }
-   */
   };
   return (
     <Formik
@@ -71,8 +84,8 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   <i
                     className={
                       name
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -94,8 +107,8 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   <i
                     className={
                       model
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -114,15 +127,13 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   component={ShowError}
                 />
                 <span
-                  title={
-                    manufacturer ? manufacturer : 'Complete the field'
-                  }
+                  title={manufacturer ? manufacturer : 'Complete the field'}
                 >
                   <i
                     className={
                       manufacturer
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -142,16 +153,14 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                 />
                 <span
                   title={
-                    cost_in_credits
-                      ? cost_in_credits
-                      : 'Complete the field'
+                    cost_in_credits ? cost_in_credits : 'Complete the field'
                   }
                 >
                   <i
                     className={
                       cost_in_credits
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -173,8 +182,8 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   <i
                     className={
                       crew
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -192,14 +201,12 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   name="passengers"
                   component={ShowError}
                 />
-                <span
-                  title={passengers ? passengers : 'Complete the field'}
-                >
+                <span title={passengers ? passengers : 'Complete the field'}>
                   <i
                     className={
                       passengers
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -218,15 +225,13 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   component={ShowError}
                 />
                 <span
-                  title={
-                    cargo_capacity ? cargo_capacity : 'Complete the field'
-                  }
+                  title={cargo_capacity ? cargo_capacity : 'Complete the field'}
                 >
                   <i
                     className={
                       cargo_capacity
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>
@@ -245,15 +250,13 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
                   component={ShowError}
                 />
                 <span
-                  title={
-                    vehicle_class ? vehicle_class : 'Complete the field'
-                  }
+                  title={vehicle_class ? vehicle_class : 'Complete the field'}
                 >
                   <i
                     className={
                       vehicle_class
-                      ? 'fas fa-times field-warning'
-                      : 'fas fa-check field-correct'
+                        ? 'fas fa-times field-warning'
+                        : 'fas fa-check field-correct'
                     }
                   ></i>
                 </span>

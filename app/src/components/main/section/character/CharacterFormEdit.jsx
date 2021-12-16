@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-//import { AxiosRequest } from '../../../helpers/axios-request';
+import { AxiosRequest } from '../../../helpers/axios-request';
 import './validations/Errors.css';
 import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
@@ -16,24 +16,37 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
   const btnAdd = btnAction === 'add';
   const handleSubmit = async (values) => {
     setEditing(true);
-    setTimeout(() => {
-      setEditing(false);
-      if (btnAdd) {
-        Toast('Add complete', 'success');
-      } else {
-        Toast('Edit complete', 'success');
-      }
-      setInfo(true);
-      setTimeout(() => navigate('/characters'), 3000);
-    }, 3000);
-    /*
+    const id = values.id;
+    delete values.id;
     try {
-      const { status, data } = await AxiosRequest({ url: '/' });
-      if (status === 200) {}
+      let status, responsePost, responsePut;
+      if (btnAdd) {
+        responsePost = await AxiosRequest({
+          method: 'POST',
+          url: `/characters/new`,
+          data: values,
+        });
+      } else {
+        responsePut = await AxiosRequest({
+          method: 'PUT',
+          url: `/characters/edit/${id}`,
+          data: values,
+        });
+      }
+      status = responsePost?.status || responsePut?.status;
+      if (status === 200) {
+        setEditing(false);
+        if (btnAdd) {
+          Toast('Add complete', 'success');
+        } else {
+          Toast('Edit complete', 'success');
+        }
+        setInfo(true);
+        setTimeout(() => navigate('/characters'), 2000);
+      }
     } catch (error) {
       return Toast('Something bad happen', 'error');
     }
-    */
   };
   return (
     <Formik
