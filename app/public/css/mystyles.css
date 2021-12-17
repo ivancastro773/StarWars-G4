@@ -147,11 +147,11 @@ a:link, a:visited, a:active {
 }
 
 .showitem {
-  animation: showitem 1s;
+  animation: showitem 500ms;
 }
 
 .hideitem {
-  animation: hideitem 1s;
+  animation: hideitem 500ms;
 }
 
 .link-active {

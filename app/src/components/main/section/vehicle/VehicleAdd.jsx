@@ -14,14 +14,13 @@ function VehicleAdd() {
       </InvalidPage>
     );
   }
-
   return (
     <>
       <div className="container-cards container-card-vehicle">
         <div className="card-box-vehicle">
           <div className="img-vehicle">
             <img
-              src="/img/vehicles/portrait.jpg"
+              src="/img/star-wars-logo.jpg"
               className="img-style-vehicle"
               alt="vehicle"
             />

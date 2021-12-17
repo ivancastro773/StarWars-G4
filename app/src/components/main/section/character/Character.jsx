@@ -9,16 +9,23 @@ const Character = () => {
   const [info, setInfo] = useState(true);
   const { state } = useLocation();
   if (!state) {
-    return <InvalidPage />
+    return <InvalidPage />;
   }
   const { character = {} } = state;
+  const showImg = (charac) => {
+    if (charac.img === '' || charac.img === null) {
+      return '/img/star-wars-logo.jpg';
+    } else {
+      return `/img/characters/${character.img}`;
+    }
+  };
   return (
     <>
       <div className="container-cards container-card-character">
         <div className="card-box-character">
           <div className="img-character">
             <img
-              src="/img/characters/portrait.png"
+              src={showImg(character)}
               className="img-style-chac"
               alt="character"
             />

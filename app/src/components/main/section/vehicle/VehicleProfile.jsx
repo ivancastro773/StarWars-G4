@@ -11,13 +11,13 @@ function VehicleProfile({ vehicle }) {
       },
     });
   };
-  const showImg=(vehicle)=>{
-    if(vehicle.img ===""){
-      return "/img/vehicles/portrait.jpg";
-    } else{
+  const showImg = (vehicle) => {
+    if (vehicle.img === '' || vehicle.img === null) {
+      return '/img/star-wars-logo.jpg';
+    } else {
       return `/img/vehicles/${vehicle.img}`;
     }
-  }
+  };
   return (
     <div className="card-box-vehicle">
       <div className="img-vehicle">

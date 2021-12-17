@@ -14,14 +14,13 @@ const CharacterAdd = () => {
       </InvalidPage>
     );
   }
-
   return (
     <>
       <div className="container-cards container-card-character">
         <div className="card-box-character">
           <div className="img-character">
             <img
-              src="/img/characters/portrait.png"
+              src="/img/star-wars-logo.jpg"
               className="img-style-chac"
               alt=""
             />
