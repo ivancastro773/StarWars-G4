@@ -10,17 +10,38 @@ import { MainContext } from '../../../../context/MainContext';
 function VehiclesPage() {
   const [globalcontext] = useContext(MainContext);
   const [vehicles, setVehicles] = useState([]);
-  const [apiurl, ] = useState('/vehicles/all');
+  const [apiurl] = useState('/vehicles/all');
+
+  const [filtervehics, setFilterVehics] = useState([]);
+  const [isfiltered, setIsFiltered] = useState(false);
+  const [userquery, setUserQuery] = useState({ query: '' });
+  const { query } = userquery;
+
   const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
 
-  const handlePrevPageClick = () => {
-    goToTop();
+  const handlePrevPageClick = () => goToTop();
+
+  const handleNextPageClick = () => goToTop();
+
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
+    setUserQuery((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
   };
 
-  const handleNextPageClick = () => {
-    goToTop();
+  const handleSearch = () => {
+    setIsFiltered(true);
+    const vehics = vehicles.filter((vehicle) =>
+      vehicle.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilterVehics(vehics);
   };
 
   useEffect(() => {
@@ -41,20 +62,39 @@ function VehiclesPage() {
   return (
     <>
       <div className="container-cards container-card-vehicle">
-        {logged && (
-          <div className="add-vehicle">
+        <div className="add-vehicle">
+          {logged && (
             <Link to="/vehicles/add">
               <i
                 className="fas fa-plus-circle fa-3x add-vehicle-icon"
                 title="Add a new vehicle"
               ></i>
             </Link>
+          )}
+          <div className="search-container">
+            <input
+              type="text"
+              name="query"
+              id="query"
+              placeholder="Search"
+              value={query}
+              onChange={handleInputChange}
+            />
+            <button type="button" className="btn-search" onClick={handleSearch}>
+              Search
+            </button>
           </div>
-        )}
+        </div>
         {vehicles.length === 0 ? (
           <Loader />
-        ) : (
+        ) : !isfiltered ? (
           vehicles.map((vehicle, i) => (
+            <VehicleProfile key={i} vehicle={vehicle} />
+          ))
+        ) : filtervehics.length === 0 ? (
+          <h3>No results</h3>
+        ) : (
+          filtervehics.map((vehicle, i) => (
             <VehicleProfile key={i} vehicle={vehicle} />
           ))
         )}

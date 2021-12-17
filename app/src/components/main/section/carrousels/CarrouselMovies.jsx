@@ -4,7 +4,7 @@ import { imagesCarrouselTwo } from '../../../../mocks/images-carrousel';
 function CarrouselMovies() {
   const [index, setIndex] = useState(0);
   let images = imagesCarrouselTwo();
-	images = images.map(el => ({...el, title: el.title.toUpperCase()}))
+  images = images.map((el) => ({ ...el, title: el.title.toUpperCase() }));
   const imagesLen = images.length - 1;
 
   const handlePrevMovie = () => {

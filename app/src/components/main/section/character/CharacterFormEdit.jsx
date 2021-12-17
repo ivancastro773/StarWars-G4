@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { AxiosRequest } from '../../../helpers/axios-request';
-import './validations/Errors.css';
 import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
 import Loader from '../loader/Loader';
@@ -42,7 +41,7 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
           Toast('Edit complete', 'success');
         }
         setInfo(true);
-        setTimeout(() => navigate('/characters'), 2000);
+        navigate('/characters');
       }
     } catch (error) {
       return Toast('Something bad happen', 'error');

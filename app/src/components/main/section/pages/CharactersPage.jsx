@@ -10,17 +10,38 @@ import { MainContext } from '../../../../context/MainContext';
 function CharactersPage() {
   const [globalcontext] = useContext(MainContext);
   const [characters, setCharacters] = useState([]);
-  const [apiurl, ] = useState('/characters/all');
+  const [apiurl] = useState('/characters/all');
+
+  const [filterchars, setFilterChars] = useState([]);
+  const [isfiltered, setIsFiltered] = useState(false);
+  const [userquery, setUserQuery] = useState({ query: '' });
+  const { query } = userquery;
+
   const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
 
-  const handlePrevPageClick = () => {
-    goToTop();
+  const handlePrevPageClick = () => goToTop();
+
+  const handleNextPageClick = () => goToTop();
+
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
+    setUserQuery((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
   };
 
-  const handleNextPageClick = () => {
-    goToTop();
+  const handleSearch = () => {
+    setIsFiltered(true);
+    const chars = characters.filter((character) =>
+      character.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilterChars(chars);
   };
 
   useEffect(() => {
@@ -41,20 +62,39 @@ function CharactersPage() {
   return (
     <>
       <div className="container-cards container-card-character">
-        {logged && (
-          <div className="add-character">
+        <div className="add-character">
+          {logged && (
             <Link to="/characters/add">
               <i
                 className="fas fa-plus-circle fa-3x add-charac-icon"
                 title="Add a new character"
               ></i>
             </Link>
+          )}
+          <div className="search-container">
+            <input
+              type="text"
+              name="query"
+              id="query"
+              placeholder="Search"
+              value={query}
+              onChange={handleInputChange}
+            />
+            <button type="button" className="btn-search" onClick={handleSearch}>
+              Search
+            </button>
           </div>
-        )}
+        </div>
         {characters.length === 0 ? (
           <Loader />
-        ) : (
+        ) : !isfiltered ? (
           characters.map((character, i) => (
+            <CharacterProfile key={i} character={character} />
+          ))
+        ) : filterchars.length === 0 ? (
+          <h3>No results</h3>
+        ) : (
+          filterchars.map((character, i) => (
             <CharacterProfile key={i} character={character} />
           ))
         )}
