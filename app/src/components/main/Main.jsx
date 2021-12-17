@@ -9,6 +9,7 @@ import Vehicle from './section/vehicle/Vehicle';
 import VehicleAdd from './section/vehicle/VehicleAdd';
 import InvalidPage from './section/error/InvalidPage';
 import UsersPage from './section/pages/UsersPage';
+import AuthPage from './section/auth/AuthPage';
 
 function Main() {
   return (
@@ -22,6 +23,7 @@ function Main() {
         <Route exact path="characters/edit" element={<Character />} />
         <Route exact path="characters/add" element={<CharacterAdd />} />
         <Route exact path="users" element={<UsersPage />} />
+        <Route exact path="auth/activation/:token" element={<AuthPage />} />
         <Route path="*" element={<InvalidPage />} />
       </Routes>
     </main>

@@ -4,8 +4,6 @@ import { MainContext } from '../../context/MainContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Toast } from '../helpers/sweet-alert';
 
-import './nav.css';
-
 function Navbar() {
   const [globalcontext, setGlobalContext] = useContext(MainContext);
 

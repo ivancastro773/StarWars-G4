@@ -44,7 +44,8 @@ export const AxiosRequest = async (opts = defaultData, ...rest) => {
     return axiosresponse;
   } catch (error) {
     return {
-      ...error.response,
+      ...error,
+      ...error.response.data,
       data: [],
       msg: 'Error with some of the data provided',
       status: error.response.status || 500,

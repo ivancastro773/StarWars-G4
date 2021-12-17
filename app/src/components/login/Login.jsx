@@ -1,13 +1,19 @@
-import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
-import './login.css';
 import { MainContext } from '../../context/MainContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { AxiosRequest } from '../helpers/axios-request';
 import { Toast } from '../helpers/sweet-alert';
+import Loader from '../main/section/loader/Loader';
 
 function Login() {
+  const initialState = {
+    email: '',
+    password: '',
+  };
+  const [authdata, setAuthData] = useState(initialState);
+  const [loginin, setIsLoginin] = useState(false);
   const [globalcontext, setGlobalContext] = useContext(MainContext);
   const { logged, user } = globalcontext;
 
@@ -18,35 +24,55 @@ function Login() {
     return <Navigate to="/" />;
   }
 
-  // TODO: utilizar Formik para la validacion del formulario
-  const handleLogin = async () => {
+  const { email, password } = authdata;
+
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
+    setAuthData((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email.trim() === '' || password.trim() === '') {
+      return Toast('Please, complete all the fields', 'warning');
+    }
     try {
-      const response = await AxiosRequest({
+      setIsLoginin(true);
+      const { status, msg, data } = await AxiosRequest({
         url: '/auth/login',
         method: 'POST',
         data: {
-          email: '',
-          password: '',
+          email,
+          password,
         },
       });
-      if (response.status === 200) {
-        const userData = {
-          name: '',
-          mail: '',
-          role: '',
-        };
-        setLogged(true);
-        setUserData(userData);
-        setGlobalContext((prevState) => {
-          return {
-            ...prevState,
-            logged: true,
-            user: userData,
-          };
-        });
-        Toast('Login success', 'success');
+      if (status !== 200) {
+        setIsLoginin(false);
+        return Toast(msg, 'warning');
       }
+      const userData = {
+        ...data,
+      };
+      setLogged(true);
+      setUserData(userData);
+      setGlobalContext((prevState) => {
+        return {
+          ...prevState,
+          logged: true,
+          user: userData,
+        };
+      });
+      setIsLoginin(false);
+      Toast('Welcome', 'success');
+      return <Navigate to="/" />
     } catch (error) {
+      setIsLoginin(false);
       return Toast('Something bad happen', 'error');
     }
   };
@@ -55,19 +81,57 @@ function Login() {
     <div className="login-container">
       <div className="form-container">
         <h2>Login</h2>
-        <form>
-          <label>User</label>
-          <br />
-          <input type="text" placeholder="User" />
-          <br />
-          <label>Password</label>
-          <br />
-          <input type="password" placeholder="Password" />
-          <br />
-          <br />
-          <button className="bt1">Sing in</button>
-          <button>Create user</button>
+        <form onSubmit={handleSubmit}>
+          <div className="form-input">
+            <label>Email</label>
+            <br />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              autoFocus
+              value={email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-input">
+            <label>Password</label>
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="btn-submit-container">
+            <button
+              type="submit"
+              className="btn-auth btn-login"
+              disabled={loginin}
+            >
+              {loginin ? 'login...' : 'login'}
+            </button>
+          </div>
+          {loginin && <Loader className="auth-loader" />}
         </form>
+        <div className="more-actions">
+          <div className="signup-info">
+            <p>You don't have an account?</p>
+            <Link to="/signup" className="btn1">
+              Signup
+            </Link>
+          </div>
+          <div className="reset-info">
+            <p>Forgot your password?</p>
+            <Link to="/reset/email" className="btn1">
+              Reset
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
