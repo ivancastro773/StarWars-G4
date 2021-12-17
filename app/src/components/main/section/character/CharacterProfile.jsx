@@ -12,12 +12,19 @@ const CharacterProfile = ({ character }) => {
       },
     });
   };
+  const showImg=(charac)=>{
+    if(charac.img ===""){
+      return "/img/characters/portrait.png";
+    } else{
+      return `/img/characters/${character.img}`;
+    }
+  }
   return (
     <>
       <div className="card-box-character">
         <div className="img-character">
           <img
-            src="/img/characters/portrait.png"
+            src={showImg(character)}
             className="img-style-chac"
             alt="character"
           />

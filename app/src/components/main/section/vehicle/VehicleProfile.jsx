@@ -11,11 +11,18 @@ function VehicleProfile({ vehicle }) {
       },
     });
   };
+  const showImg=(vehicle)=>{
+    if(vehicle.img ===""){
+      return "/img/vehicles/portrait.jpg";
+    } else{
+      return `/img/vehicles/${vehicle.img}`;
+    }
+  }
   return (
     <div className="card-box-vehicle">
       <div className="img-vehicle">
         <img
-          src="/img/vehicles/portrait.jpg"
+          src={showImg(vehicle)}
           className="img-style-vehicle"
           alt="vehicle"
         />
