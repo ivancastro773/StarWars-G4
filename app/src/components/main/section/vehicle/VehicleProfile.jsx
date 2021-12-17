@@ -35,21 +35,6 @@ function VehicleProfile({ vehicle }) {
             <i className="fas fa-jedi"></i> Model: {vehicle.model}
           </li>
           <li>
-            <i className="fas fa-jedi"></i> Manufacturer: {vehicle.manufacturer}
-          </li>
-          <li>
-            <i className="fas fa-jedi"></i> Cost: {vehicle.cost_in_credits}
-          </li>
-          <li>
-            <i className="fas fa-jedi"></i> Crew: {vehicle.crew}
-          </li>
-          <li>
-            <i className="fas fa-jedi"></i> Passengers: {vehicle.passengers}
-          </li>
-          <li>
-            <i className="fas fa-jedi"></i> Cargo: {vehicle.cargo_capacity}
-          </li>
-          <li>
             <i className="fas fa-jedi"> </i> Class: {vehicle.vehicle_class}
           </li>
         </ul>

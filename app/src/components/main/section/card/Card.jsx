@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './card.css';
 
 const Card = () => {
   return (
@@ -11,7 +10,9 @@ const Card = () => {
         world and all their characteristics?
       </p>
       <p>You can discover what we have prepared for you...</p>
-      <Link to="/characters" className="btn-go-to btn-go-to-characters">characters</Link>
+      <Link to="/characters" className="btn-go-to btn-go-to-characters">
+        characters
+      </Link>
     </div>
   );
 };

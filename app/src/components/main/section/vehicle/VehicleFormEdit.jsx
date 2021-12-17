@@ -41,7 +41,7 @@ const VehicleFormEdit = ({ vehicle, setInfo, btnAction }) => {
           Toast('Edit complete', 'success');
         }
         setInfo(true);
-        setTimeout(() => navigate('/vehicles'), 2000);
+        navigate('/vehicles');
       }
     } catch (error) {
       return Toast('Something bad happen', 'error');
