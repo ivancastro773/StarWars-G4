@@ -13,10 +13,11 @@ function Navbar() {
   const [hiddendropdown, setHiddenDropdown] = useState('d-none');
 
   const { logged, user } = globalcontext;
+  const { role = '' } = user;
 
   const [, setLogged] = useLocalStorage('logged', logged);
   const [, setUserData] = useLocalStorage('user', user);
-  const isAdmin = user?.role === 'admin' || false;
+  const isAdmin = role.toLowerCase() === 'admin' || false;
 
   const handleHamburgerClick = () => {
     setBarsActive((prevState) => !prevState);
@@ -42,6 +43,7 @@ function Navbar() {
     setUserData({});
     return Toast('Session closed!', 'success');
   };
+
   return (
     <>
       <nav className="nav">
@@ -81,11 +83,23 @@ function Navbar() {
               </NavLink>
             </li>
             {logged ? (
-              <li>
-                <button className="btn-logout" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
+              <>
+                <li>
+                  <NavLink
+                    className={(navData) =>
+                      navData.isActive ? 'link-active' : ''
+                    }
+                    to="/account"
+                  >
+                    account
+                  </NavLink>
+                </li>
+                <li>
+                  <button className="btn-logout" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
             ) : (
               <li>
                 <Link to="/login" className="btn-login">
@@ -146,11 +160,23 @@ function Navbar() {
             </NavLink>
           </li>
           {logged ? (
-            <li>
-              <button className="btn-logout" onClick={handleLogout}>
-                Logout
-              </button>
-            </li>
+            <>
+              <li>
+                <NavLink
+                  className={(navData) =>
+                    navData.isActive ? 'link-active' : ''
+                  }
+                  to="/account"
+                >
+                  account
+                </NavLink>
+              </li>
+              <li>
+                <button className="btn-logout" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </>
           ) : (
             <li>
               <Link to="/login" className="btn-login">
