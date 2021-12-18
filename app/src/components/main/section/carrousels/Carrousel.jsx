@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { imagesCarrouselOne } from '../../../../mocks/images-carrousel';
 
 function Carrousel() {
   const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(false);
   const images = imagesCarrouselOne();
   const imagesLen = images.length - 1;
 
   const handlePrevImage = () => {
+    setFade(true);
+    setTimeout(() => setFade(false), 1000);
     if (index === 0) {
       setIndex(imagesLen);
     } else {
@@ -15,12 +18,27 @@ function Carrousel() {
   };
 
   const handleNextImage = () => {
+    setFade(true);
+    setTimeout(() => setFade(false), 1000);
     if (index === imagesLen) {
       setIndex(0);
     } else {
       setIndex((prevState) => prevState + 1);
     }
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFade(true);
+      if (index === imagesLen) {
+        setIndex(0);
+      } else {
+        setIndex((prevState) => prevState + 1);
+      }
+      setTimeout(() => setFade(false), 1000);
+    }, 4000);
+    return () => clearInterval(timer);
+  });
 
   return (
     <section className="carrousel-slider">
@@ -30,7 +48,7 @@ function Carrousel() {
           <span className="author">{images[index].quote.author}</span>
         </div>
         <div className="slideshow-container">
-          <div className="my-slides slider-fade">
+          <div className={`my-slides ${fade ? 'slider-fade' : ''}`}>
             <img
               className="img-carrousel"
               src={images[index].src}
