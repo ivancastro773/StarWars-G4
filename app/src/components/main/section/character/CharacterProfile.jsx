@@ -13,7 +13,7 @@ const CharacterProfile = ({ character }) => {
     });
   };
   const showImg=(charac)=>{
-    if(charac.img ===""){
+    if(charac.img ==="" || charac.img === null){
       return "/img/characters/portrait.png";
     } else{
       return `/img/characters/${character.img}`;
