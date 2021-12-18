@@ -12,13 +12,20 @@ const Vehicle = () => {
     return <InvalidPage />;
   }
   const { vehicle = {} } = state;
+  const showImg = (vehicle) => {
+    if (vehicle.img === '' || vehicle.img === null) {
+      return '/img/star-wars-logo.jpg';
+    } else {
+      return `/img/vehicles/${vehicle.img}`;
+    }
+  };
   return (
     <>
       <div className="container-cards container-card-vehicle">
         <div className="card-box-vehicle">
           <div className="img-vehicle">
             <img
-              src="/img/vehicles/portrait.jpg"
+              src={showImg(vehicle)}
               className="img-style-vehicle"
               alt="vehicle"
             />

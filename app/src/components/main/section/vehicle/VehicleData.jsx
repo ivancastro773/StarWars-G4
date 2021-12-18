@@ -5,7 +5,6 @@ import { Toast } from '../../../helpers/sweet-alert';
 const VehicleData = ({ vehicle, setInfo }) => {
   const [ globalcontext ] = useContext(MainContext);
   const { logged } = globalcontext;
-
   const fnChangeEdit = () => {
     if (!logged) {
       return Toast('You need to be logged', 'error');
@@ -39,9 +38,6 @@ const VehicleData = ({ vehicle, setInfo }) => {
           <i className="fas fa-jedi"> </i> Class: {vehicle.vehicle_class}
         </li>
       </ul>
-      <div className="img-planet-container">
-        <img src="/img/vehicles/vehicle2.jpg" className="img-planet" alt="vehicle" />
-      </div>
       <button
         type="button"
         className="btn-action start-edit btn-edit-chac"

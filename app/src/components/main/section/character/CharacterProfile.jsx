@@ -12,13 +12,13 @@ const CharacterProfile = ({ character }) => {
       },
     });
   };
-  const showImg=(charac)=>{
-    if(charac.img ==="" || charac.img === null){
-      return "/img/characters/portrait.png";
-    } else{
+  const showImg = (charac) => {
+    if (charac.img === '' || charac.img === null) {
+      return '/img/star-wars-logo.jpg';
+    } else {
       return `/img/characters/${character.img}`;
     }
-  }
+  };
   return (
     <>
       <div className="card-box-character">

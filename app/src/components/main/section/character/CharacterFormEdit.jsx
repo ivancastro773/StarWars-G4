@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import { MainContext } from '../../../../context/MainContext';
 import { AxiosRequest } from '../../../helpers/axios-request';
 import { Toast } from '../../../helpers/sweet-alert';
 import Schema from './validations/Schema';
@@ -10,9 +11,11 @@ import ShowError from './validations/ShowError';
 
 const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
   const [editing, setEditing] = useState(false);
+  const [globalcontext] = useContext(MainContext);
   const navigate = useNavigate();
   const initialValues = { ...character };
   const btnAdd = btnAction === 'add';
+  const { user: { tokenUser } } = globalcontext;
   const handleSubmit = async (values) => {
     setEditing(true);
     const id = values.id;
@@ -24,6 +27,9 @@ const CharacterFormEdit = ({ character, setInfo, btnAction }) => {
           method: 'POST',
           url: `/characters/new`,
           data: values,
+          headers: {
+            Authorization: tokenUser,
+          },
         });
       } else {
         responsePut = await AxiosRequest({

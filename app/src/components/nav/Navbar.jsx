@@ -26,7 +26,7 @@ function Navbar() {
     if (!barsactive) {
       setTimeout(() => {
         setHiddenDropdown('d-none');
-      }, 1000);
+      }, 500);
     }
   };
 
