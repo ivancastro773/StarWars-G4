@@ -8,7 +8,7 @@ import InvalidPage from '../../error/InvalidPage';
 
 const UserStandard = () => {
   const [globalcontext] = useContext(MainContext);
-  const { logged, user } = globalcontext;
+  const {user } = globalcontext;
   const { name, id } = user;
   const [currentName, setCurrentName] = useState(name);
   const [editing, setEditing] = useState(false);
@@ -28,7 +28,9 @@ const UserStandard = () => {
       const { status } = await AxiosRequest({
         url: `/user/edit/${id}`,
         method: 'PUT',
-        data: currentName,
+        data: {
+          name:currentName
+        },
       });
       if (status !== 200) {
         return Toast('Error', 'warning');
