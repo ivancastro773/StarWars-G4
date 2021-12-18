@@ -13,6 +13,7 @@ function ResetPassword() {
   };
   const [authdata, setAuthData] = useState(initialState);
   const [reseting, setReseting] = useState(false);
+
   const { password } = authdata;
 
   if (!token) {
@@ -36,7 +37,7 @@ function ResetPassword() {
       return Toast('Please, insert your new password', 'warning');
     }
     try {
-      setReseting((prevState) => !prevState);
+      setReseting(true);
       const { status, message, data } = await AxiosRequest({
         url: `/auth/resetpassword/${token}`,
         method: 'POST',
@@ -45,16 +46,15 @@ function ResetPassword() {
         },
       });
       if (status !== 200) {
-        setReseting((prevState) => !prevState);
+        setReseting(false);
         return Toast(message, 'warning');
       }
       const { message: msg } = data;
-      setReseting((prevState) => !prevState);
       setAuthData(initialState);
       Toast(msg, 'success');
       return navigate("/login");
     } catch (error) {
-      setReseting((prevState) => !prevState);
+      setReseting(false);
       return Toast('Something bad happen', 'error');
     }
   };

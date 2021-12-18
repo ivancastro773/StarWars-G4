@@ -357,7 +357,7 @@ a:active {
 .paginator-container {
   height: 80px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -388,10 +388,11 @@ a:active {
   padding: 20px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.9);
+  min-height: calc(100vh - 80px);
 }
 
 .user-name {
-  height: 80px;
+  min-height: 100px;
 }
 
 .is-admin {
@@ -404,7 +405,7 @@ a:active {
 .user-info {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 }
@@ -429,6 +430,7 @@ a:active {
   flex-wrap: wrap;
   gap: 20px;
   position: relative;
+  min-height: calc(100vh - 80px);
 }
 
 .container-card-character {
@@ -444,6 +446,7 @@ a:active {
   background-attachment: fixed;
   background-position: center;
   padding: 60px 0 50px 0;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 /* CHARACTER, VEHICLE ADD */
@@ -611,6 +614,7 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* authentication */
@@ -732,6 +736,11 @@ a:active {
 }
 
 /* search */
+.search-user-container {
+  margin: 15px auto;
+  padding: 10px;
+}
+
 .search-container {
   margin: 0 20px;
 }
@@ -776,22 +785,24 @@ a:active {
 
 /* home card */
 .container-card {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.98);
   padding: 30px 0;
-  text-align: center;
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  min-height: 500px;
 }
 
-.container-card h4 {
+.characters-presentation h4,
+.vehicles-presentation h4 {
   font-size: xx-large;
   color: white;
   text-align: center;
 }
 
-.container-card p {
+.characters-presentation p,
+.vehicles-presentation p {
   color: white;
   text-align: center;
   font-size: large;
@@ -812,6 +823,50 @@ a:active {
 .btn-go-to-characters:hover {
   color: rgba(255, 255, 255, 1);
   border-bottom: 2px solid green;
+}
+
+/* characters preview */
+.characters-preview,
+.vehicles-preview {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.img-container-preview {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.img-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shadow-text {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.shadow-text:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* footer */
@@ -854,6 +909,19 @@ a:active {
   justify-content: center;
   gap: 1rem;
 }
+
+/* div separator */
+.separator-container {
+  min-height: 100px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  text-align: center;
+}
+
 
 /* animations */
 @keyframes showitem {
@@ -1121,6 +1189,16 @@ a:active {
     border-radius: 15px 0 0 15px;
     width: 100%;
     height: 100%;
+  }
+  .container-card {
+    flex-direction: row;
+  }
+  .characters-presentation,
+  .vehicles-presentation,
+  .characters-preview,
+  .vehicles-preview {
+    width: 50%;
+    padding: 0 15px;
   }
 }
 

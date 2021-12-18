@@ -10,13 +10,12 @@ import { MainContext } from '../../../../context/MainContext';
 function CharactersPage() {
   const [globalcontext] = useContext(MainContext);
   const [characters, setCharacters] = useState([]);
-  const [apiurl] = useState('/characters/all');
-
+  const [loadfail, setLoadFail] = useState(false);
   const [filterchars, setFilterChars] = useState([]);
   const [isfiltered, setIsFiltered] = useState(false);
   const [userquery, setUserQuery] = useState({ query: '' });
-  const { query } = userquery;
 
+  const { query } = userquery;
   const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
@@ -36,7 +35,8 @@ function CharactersPage() {
     });
   };
 
-  const handleSearch = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setIsFiltered(true);
     const chars = characters.filter((character) =>
       character.name.toLowerCase().includes(query.toLowerCase())
@@ -45,19 +45,22 @@ function CharactersPage() {
   };
 
   useEffect(() => {
-    const getData = async (url = apiurl) => {
+    const getData = async (url) => {
       try {
         const { status, data, msg } = await AxiosRequest({ url });
         if (status !== 200) {
+          setLoadFail(true);
           return Toast(msg, 'warning');
         }
+        setLoadFail(false);
         setCharacters(data);
       } catch (error) {
+        setLoadFail(true);
         return Toast('Something bad happen', 'error');
       }
     };
-    getData();
-  }, [apiurl]);
+    getData('/characters/all');
+  }, []);
 
   return (
     <>
@@ -71,7 +74,7 @@ function CharactersPage() {
               ></i>
             </Link>
           )}
-          <div className="search-container">
+          <form onSubmit={handleSubmit} className="search-container">
             <input
               type="text"
               name="query"
@@ -80,13 +83,17 @@ function CharactersPage() {
               value={query}
               onChange={handleInputChange}
             />
-            <button type="button" className="btn-search" onClick={handleSearch}>
+            <button type="submit" className="btn-search">
               Search
             </button>
-          </div>
+          </form>
         </div>
         {characters.length === 0 ? (
-          <Loader />
+          loadfail ? (
+            <h3>No results</h3>
+          ) : (
+            <Loader />
+          )
         ) : !isfiltered ? (
           characters.map((character, i) => (
             <CharacterProfile key={i} character={character} />

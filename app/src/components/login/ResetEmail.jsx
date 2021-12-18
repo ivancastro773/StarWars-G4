@@ -9,7 +9,7 @@ function ResetEmail() {
     email: '',
   };
   const [authdata, setAuthData] = useState(initialState);
-  const [reseting, setReseting] = useState(false);
+  const [validating, setValidating] = useState(false);
   const { email } = authdata;
 
   const handleInputChange = (e) => {
@@ -29,7 +29,7 @@ function ResetEmail() {
       return Toast('Please, insert your email', 'warning');
     }
     try {
-      setReseting((prevState) => !prevState);
+      setValidating(true);
       const { status, message, data } = await AxiosRequest({
         url: '/auth/forgot-password',
         method: 'POST',
@@ -38,15 +38,15 @@ function ResetEmail() {
         },
       });
       if (status !== 200) {
-        setReseting((prevState) => !prevState);
+        setValidating(false);
         return Toast(message, 'warning');
       }
       const { message: msg } = data;
-      setReseting((prevState) => !prevState);
+      setValidating(false);
       setAuthData(initialState);
       return Toast(msg, 'success');
     } catch (error) {
-      setReseting((prevState) => !prevState);
+      setValidating(false);
       return Toast('Something bad happen', 'error');
     }
   };
@@ -73,12 +73,12 @@ function ResetEmail() {
             <button
               type="submit"
               className="btn-auth btn-login"
-              disabled={reseting}
+              disabled={validating}
             >
-              {reseting ? 'reseting...' : 'reset'}
+              {validating ? 'validating...' : 'validate'}
             </button>
           </div>
-          {reseting && <Loader className="auth-loader" />}
+          {validating && <Loader className="auth-loader" />}
         </form>
         <div className="more-actions">
           <div>

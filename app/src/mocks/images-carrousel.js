@@ -1,7 +1,7 @@
 export const imagesCarrouselOne = () => {
   return [
     {
-      src: 'img/carrouselone/wallpaper-01.jpg',
+      src: '/img/carrouselone/wallpaper-01.jpg',
       alt: 'star wars wallpaper 01',
       title: 'Wallpaper',
       quote: {
@@ -10,7 +10,7 @@ export const imagesCarrouselOne = () => {
       },
     },
     {
-      src: 'img/carrouselone/wallpaper-02.jpg',
+      src: '/img/carrouselone/wallpaper-02.jpg',
       alt: 'star wars wallpaper 02',
       title: 'Wallpaper',
       quote: {
@@ -19,7 +19,7 @@ export const imagesCarrouselOne = () => {
       },
     },
     {
-      src: 'img/carrouselone/wallpaper-03.jpg',
+      src: '/img/carrouselone/wallpaper-03.jpg',
       alt: 'star wars wallpaper 03',
       title: 'Wallpaper',
       quote: {
@@ -28,7 +28,7 @@ export const imagesCarrouselOne = () => {
       },
     },
     {
-      src: 'img/carrouselone/wallpaper-04.jpg',
+      src: '/img/carrouselone/wallpaper-04.jpg',
       alt: 'star wars wallpaper 04',
       title: 'Wallpaper',
       quote: {
@@ -37,7 +37,7 @@ export const imagesCarrouselOne = () => {
       },
     },
     {
-      src: 'img/carrouselone/wallpaper-05.jpg',
+      src: '/img/carrouselone/wallpaper-05.jpg',
       alt: 'star wars wallpaper 05',
       title: 'Wallpaper',
       quote: {
@@ -46,7 +46,7 @@ export const imagesCarrouselOne = () => {
       },
     },
     {
-      src: 'img/carrouselone/wallpaper-06.jpg',
+      src: '/img/carrouselone/wallpaper-06.jpg',
       alt: 'star wars wallpaper 06',
       title: 'Wallpaper',
       quote: {
@@ -60,7 +60,7 @@ export const imagesCarrouselOne = () => {
 export const imagesCarrouselTwo = () => {
   return [
     {
-      src: 'img/movies/movie-the-phantom-menace.jpg',
+      src: '/img/movies/movie-the-phantom-menace.jpg',
       alt: 'star wars movie wallpaper',
       title: 'the phantom menace',
       description:
@@ -68,7 +68,7 @@ export const imagesCarrouselTwo = () => {
       release: '1999',
     },
     {
-      src: 'img/movies/movie-attack-of-the-clones.jpg',
+      src: '/img/movies/movie-attack-of-the-clones.jpg',
       alt: 'star wars movie wallpaper',
       title: 'attack of the clones',
       description:
@@ -76,7 +76,7 @@ export const imagesCarrouselTwo = () => {
       release: '2002',
     },
     {
-      src: 'img/movies/movie-revenge-of-the-sith.jpg',
+      src: '/img/movies/movie-revenge-of-the-sith.jpg',
       alt: 'star wars movie wallpaper',
       title: 'revenge of the sith',
       description:
@@ -84,7 +84,7 @@ export const imagesCarrouselTwo = () => {
       release: '2005',
     },
     {
-      src: 'img/movies/movie-a-new-hope.jpg',
+      src: '/img/movies/movie-a-new-hope.jpg',
       alt: 'star wars movie wallpaper',
       title: 'a new hope',
       description:
@@ -92,7 +92,7 @@ export const imagesCarrouselTwo = () => {
       release: '1977',
     },
     {
-      src: 'img/movies/movie-the-empire-strikes-back.jpg',
+      src: '/img/movies/movie-the-empire-strikes-back.jpg',
       alt: 'star wars movie wallpaper',
       title: 'the empire strikes back',
       description:
@@ -100,7 +100,7 @@ export const imagesCarrouselTwo = () => {
       release: '1980',
     },
     {
-      src: 'img/movies/movie-return-of-the-jedi.jpg',
+      src: '/img/movies/movie-return-of-the-jedi.jpg',
       alt: 'star wars movie wallpaper',
       title: 'return of the jedi',
       description:
@@ -108,7 +108,7 @@ export const imagesCarrouselTwo = () => {
       release: '1983',
     },
     {
-      src: 'img/movies/movie-the-force-awakens.jpg',
+      src: '/img/movies/movie-the-force-awakens.jpg',
       alt: 'star wars movie wallpaper',
       title: 'the force awakens',
       description:
@@ -116,7 +116,7 @@ export const imagesCarrouselTwo = () => {
       release: '2015',
     },
     {
-      src: 'img/movies/movie-the-last-jedi.jpg',
+      src: '/img/movies/movie-the-last-jedi.jpg',
       alt: 'star wars movie wallpaper',
       title: 'the last jedi',
       description:
@@ -124,12 +124,52 @@ export const imagesCarrouselTwo = () => {
       release: '2017',
     },
     {
-      src: 'img/movies/movie-the-rise-of-skywalker.jpg',
+      src: '/img/movies/movie-the-rise-of-skywalker.jpg',
       alt: 'star wars movie wallpaper',
       title: 'the rise of skywalker',
       description:
         'In the riveting conclusion of the landmark Skywalker saga, new legends will be born-and the final battle for freedom is yet to come',
       release: '2019',
+    },
+  ];
+};
+
+export const charactersGallery = () => {
+  return [
+    {
+      src: '/img/characters/Anakin-skywalker.png',
+      alt: 'character',
+      title: 'anakin skywalker',
+    },
+    {
+      src: '/img/characters/Obi-Wan-Kenobi.jpg',
+      alt: 'character',
+      title: 'obi-wan kenobi',
+    },
+    {
+      src: '/img/characters/yoda.png',
+      alt: 'character',
+      title: 'yoda',
+    },
+  ];
+};
+
+export const vehiclesGallery = () => {
+  return [
+    {
+      src: '/img/vehicles/imperial.png',
+      alt: 'vehicle',
+      title: 'imperial',
+    },
+    {
+      src: '/img/vehicles/star-death.png',
+      alt: 'vehicle',
+      title: 'death star',
+    },
+    {
+      src: '/img/vehicles/x-wing.jpg',
+      alt: 'vehicle',
+      title: 'x-wing',
     },
   ];
 };

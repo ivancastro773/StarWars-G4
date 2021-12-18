@@ -68,9 +68,8 @@ function Login() {
           user: userData,
         };
       });
-      setIsLoginin(false);
       Toast('Welcome', 'success');
-      return <Navigate to="/" />
+      return <Navigate to="/" />;
     } catch (error) {
       setIsLoginin(false);
       return Toast('Something bad happen', 'error');

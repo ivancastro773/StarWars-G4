@@ -9,7 +9,7 @@ function Carrousel() {
 
   const handlePrevImage = () => {
     setFade(true);
-    setTimeout(() => setFade(false), 1000);
+    setTimeout(() => setFade(false), 500);
     if (index === 0) {
       setIndex(imagesLen);
     } else {
@@ -19,7 +19,7 @@ function Carrousel() {
 
   const handleNextImage = () => {
     setFade(true);
-    setTimeout(() => setFade(false), 1000);
+    setTimeout(() => setFade(false), 500);
     if (index === imagesLen) {
       setIndex(0);
     } else {
@@ -28,17 +28,20 @@ function Carrousel() {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timerInterval = window.setInterval(() => {
       setFade(true);
       if (index === imagesLen) {
         setIndex(0);
       } else {
         setIndex((prevState) => prevState + 1);
       }
-      setTimeout(() => setFade(false), 1000);
-    }, 4000);
-    return () => clearInterval(timer);
-  });
+    }, 5000);
+    const timerTimeout = window.setTimeout(() => setFade(false), 1000);
+    return () => {
+      clearInterval(timerInterval);
+      clearTimeout(timerTimeout);
+    };
+  }, [imagesLen, index]);
 
   return (
     <section className="carrousel-slider">
