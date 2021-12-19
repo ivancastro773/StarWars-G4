@@ -420,6 +420,7 @@ a:active {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  border-radius: 4px;
 }
 
 /* character, vehicles component */
@@ -1085,6 +1086,7 @@ a:active {
   }
   .description-chac {
     height: 500px;
+    border-radius: 4px;
   }
   .img-character,
   .img-vehicle {
@@ -1151,6 +1153,7 @@ a:active {
   }
   .description-chac {
     height: 500px;
+    border-radius: 4px;
   }
   .img-character,
   .img-vehicle {

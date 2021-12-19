@@ -31,13 +31,16 @@ function UsersPage() {
     });
   };
 
+  const filterElements = (arr, key, query) => {
+    return arr.filter((el) =>
+      el[key].toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsFiltered(true);
-    const usersData = users.filter((user) =>
-      user.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilterUsers(usersData);
+    setFilterUsers(filterElements(users, 'name', query));
   };
 
   useEffect(() => {

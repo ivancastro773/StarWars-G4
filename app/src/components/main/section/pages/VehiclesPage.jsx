@@ -24,6 +24,12 @@ function VehiclesPage() {
 
   const handleNextPageClick = () => goToTop();
 
+  const filterElements = (arr, key, query) => {
+    return arr.filter((el) =>
+      el[key].toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
   const handleInputChange = (e) => {
     const { target } = e;
     const { name, value } = target;
@@ -38,10 +44,7 @@ function VehiclesPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsFiltered(true);
-    const vehics = vehicles.filter((vehicle) =>
-      vehicle.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilterVehics(vehics);
+    setFilterVehics(filterElements(vehicles, 'name', query));
   };
 
   useEffect(() => {

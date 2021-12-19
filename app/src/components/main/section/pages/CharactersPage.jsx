@@ -24,6 +24,12 @@ function CharactersPage() {
 
   const handleNextPageClick = () => goToTop();
 
+  const filterElements = (arr, key, query) => {
+    return arr.filter((el) =>
+      el[key].toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
   const handleInputChange = (e) => {
     const { target } = e;
     const { name, value } = target;
@@ -38,10 +44,7 @@ function CharactersPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsFiltered(true);
-    const chars = characters.filter((character) =>
-      character.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilterChars(chars);
+    setFilterChars(filterElements(characters, 'name', query));
   };
 
   useEffect(() => {

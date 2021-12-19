@@ -3,7 +3,7 @@ import CarrouselMovies from './carrousels/CarrouselMovies';
 import CharactersCard from './card/CharactersCard';
 import VehiclesCard from './card/VehiclesCard';
 import Separator from './separator/Separator';
-import { Link } from 'react-router-dom';
+import JoinUs from './separator/JoinUs';
 
 function Home() {
   return (
@@ -12,10 +12,7 @@ function Home() {
       <CarrouselMovies />
       <CharactersCard />
       <Separator>
-        <h2>
-          <Link to="signup">Join us</Link> and discover all the benefits we have
-          prepared for you...
-        </h2>
+        <JoinUs />
       </Separator>
       <VehiclesCard />
     </>

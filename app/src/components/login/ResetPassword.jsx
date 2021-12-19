@@ -50,7 +50,6 @@ function ResetPassword() {
         return Toast(message, 'warning');
       }
       const { message: msg } = data;
-      setAuthData(initialState);
       Toast(msg, 'success');
       return navigate("/login");
     } catch (error) {

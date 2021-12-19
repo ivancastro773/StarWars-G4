@@ -9,7 +9,7 @@ function Carrousel() {
 
   const handlePrevImage = () => {
     setFade(true);
-    setTimeout(() => setFade(false), 500);
+    window.setTimeout(() => setFade(false), 500);
     if (index === 0) {
       setIndex(imagesLen);
     } else {
@@ -19,7 +19,7 @@ function Carrousel() {
 
   const handleNextImage = () => {
     setFade(true);
-    setTimeout(() => setFade(false), 500);
+    window.setTimeout(() => setFade(false), 500);
     if (index === imagesLen) {
       setIndex(0);
     } else {

@@ -3,7 +3,7 @@ import { MainContext } from '../../../../context/MainContext';
 import { Toast } from '../../../helpers/sweet-alert';
 
 const VehicleData = ({ vehicle, setInfo }) => {
-  const [ globalcontext ] = useContext(MainContext);
+  const [globalcontext] = useContext(MainContext);
   const { logged } = globalcontext;
   const fnChangeEdit = () => {
     if (!logged) {
