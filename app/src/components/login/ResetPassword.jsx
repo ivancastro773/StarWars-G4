@@ -38,7 +38,11 @@ function ResetPassword() {
     }
     try {
       setReseting(true);
-      const { status, message, data } = await AxiosRequest({
+      const {
+        status,
+        data,
+        message = '',
+      } = await AxiosRequest({
         url: `/auth/resetpassword/${token}`,
         method: 'POST',
         data: {
@@ -46,12 +50,13 @@ function ResetPassword() {
         },
       });
       if (status !== 200) {
+        let msg = message || 'Reseting failed';
         setReseting(false);
-        return Toast(message, 'warning');
+        return Toast(msg, 'warning');
       }
       const { message: msg } = data;
       Toast(msg, 'success');
-      return navigate("/login");
+      return navigate('/login');
     } catch (error) {
       setReseting(false);
       return Toast('Something bad happen', 'error');
