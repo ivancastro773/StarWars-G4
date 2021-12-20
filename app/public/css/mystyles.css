@@ -783,6 +783,9 @@ a:active {
   background-color: rgba(255, 255, 255, 0.3);
   border-bottom: 2px solid green;
 }
+.space-login{
+  margin-left: 5px;
+}
 
 /* home card */
 .container-card {

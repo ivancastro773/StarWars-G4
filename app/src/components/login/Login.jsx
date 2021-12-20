@@ -12,6 +12,20 @@ function Login() {
     email: '',
     password: '',
   };
+  const ShowPassword = () => {
+    if (iconPass ===true) {
+      setIconPass(false);
+    }else{
+      setIconPass(true);
+    }
+    var tipo = document.getElementById('password');
+    if (tipo.type == 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
+  const [iconPass,setIconPass] = useState(true);
   const [authdata, setAuthData] = useState(initialState);
   const [loginin, setIsLoginin] = useState(false);
   const [globalcontext, setGlobalContext] = useContext(MainContext);
@@ -103,6 +117,7 @@ function Login() {
             <label>Password</label>
             <br />
             <input
+              id="password"
               type="password"
               name="password"
               placeholder="Password"
@@ -110,6 +125,7 @@ function Login() {
               value={password}
               onChange={handleInputChange}
             />
+            <span className='space-login' onClick={ShowPassword}>{iconPass ? <i class="fas fa-eye-slash"></i> : <i class="far fa-eye"></i>}</span>
           </div>
           <div className="btn-submit-container">
             <button
