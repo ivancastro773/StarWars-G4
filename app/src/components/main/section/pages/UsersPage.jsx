@@ -10,25 +10,58 @@ import User from '../user/User';
 function UsersPage() {
   const [globalcontext] = useContext(MainContext);
   const [users, setUsers] = useState([]);
+  const [loadfail, setLoadFail] = useState(false);
+  const [filterusers, setFilterUsers] = useState([]);
+  const [isfiltered, setIsFiltered] = useState(false);
+  const [userquery, setUserQuery] = useState({ query: '' });
+
   const { logged, user } = globalcontext;
-  const { name, role } = user;
-  const isAdmin = role === 'admin';
-  const [apiurl] = useState('/user/all');
+  const { query } = userquery;
+  const { name = '', role = '' } = user;
+  const isAdmin = role.toLowerCase() === 'admin';
+
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
+    setUserQuery((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  const filterElements = (arr, key, query) => {
+    return arr.filter((el) =>
+      el[key].toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsFiltered(true);
+    setFilterUsers(filterElements(users, 'name', query));
+  };
 
   useEffect(() => {
-    const getData = async (url = apiurl) => {
-      try {
-        const { status, data, msg } = await AxiosRequest({ url });
-        if (status !== 200) {
-          return Toast(msg, 'warning');
+    if (isAdmin) {
+      const getData = async (url) => {
+        try {
+          const { status, data, msg } = await AxiosRequest({ url });
+          if (status !== 200) {
+            setLoadFail(true);
+            return Toast(msg, 'warning');
+          }
+          setLoadFail(false);
+          setUsers(data);
+        } catch (error) {
+          setLoadFail(true);
+          return Toast('Something bad happen', 'error');
         }
-        setUsers(data);
-      } catch (error) {
-        return Toast('Something bad happen', 'error');
-      }
-    };
-    getData();
-  }, [apiurl]);
+      };
+      getData('/user/all');
+    }
+  }, [isAdmin]);
 
   if (!logged || !isAdmin) {
     return <InvalidPage />;
@@ -40,15 +73,38 @@ function UsersPage() {
         <h2>
           Hello admin <span className="is-admin">{name}</span>
         </h2>
+        <div className="search-user-container">
+          <form onSubmit={handleSubmit} className="search-container">
+            <input
+              type="text"
+              name="query"
+              id="query"
+              placeholder="Search"
+              value={query}
+              onChange={handleInputChange}
+            />
+            <button type="submit" className="btn-search">
+              Search
+            </button>
+          </form>
+        </div>
       </div>
       <div className="user-data">
         {users.length === 0 ? (
-          <Loader />
+          loadfail ? (
+            <h3>No results</h3>
+          ) : (
+            <Loader />
+          )
         ) : (
           <div className="user-info">
-            {users.map((user, i) => (
-              <User key={i} user={user} />
-            ))}
+            {!isfiltered ? (
+              users.map((user, i) => <User key={i} user={user} />)
+            ) : filterusers.length === 0 ? (
+              <h3>No results</h3>
+            ) : (
+              filterusers.map((user, i) => <User key={i} user={user} />)
+            )}
           </div>
         )}
       </div>

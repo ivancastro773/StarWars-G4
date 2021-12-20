@@ -44,7 +44,11 @@ function Login() {
     }
     try {
       setIsLoginin(true);
-      const { status, msg, data } = await AxiosRequest({
+      const {
+        status,
+        data,
+        message = '',
+      } = await AxiosRequest({
         url: '/auth/login',
         method: 'POST',
         data: {
@@ -53,6 +57,7 @@ function Login() {
         },
       });
       if (status !== 200) {
+        let msg = message || 'Login failed. Check your data';
         setIsLoginin(false);
         return Toast(msg, 'warning');
       }
@@ -68,9 +73,8 @@ function Login() {
           user: userData,
         };
       });
-      setIsLoginin(false);
       Toast('Welcome', 'success');
-      return <Navigate to="/" />
+      return <Navigate to="/" />;
     } catch (error) {
       setIsLoginin(false);
       return Toast('Something bad happen', 'error');

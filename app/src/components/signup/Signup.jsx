@@ -16,10 +16,10 @@ function Signup() {
   };
   const [authdata, setAuthData] = useState(initialState);
   const [signingin, setIsSigningIn] = useState(false);
-  const [globalcontext, ] = useContext(MainContext);
+  const [globalcontext] = useContext(MainContext);
   const { logged } = globalcontext;
 
-  const [islogged, ] = useLocalStorage('logged', logged);
+  const [islogged] = useLocalStorage('logged', logged);
 
   if (islogged) {
     return <Navigate to="/" />;
@@ -50,7 +50,11 @@ function Signup() {
     }
     try {
       setIsSigningIn(true);
-      const { status, message, data } = await AxiosRequest({
+      const {
+        status,
+        data,
+        message = '',
+      } = await AxiosRequest({
         url: '/auth/register',
         method: 'POST',
         data: {
@@ -62,7 +66,8 @@ function Signup() {
       });
       if (status !== 200) {
         setIsSigningIn(false);
-        return Toast(message, 'warning');
+        let msg = message || 'Signup failed';
+        return Toast(msg, 'warning');
       }
       const { message: msg } = data;
       setIsSigningIn(false);

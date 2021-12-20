@@ -10,13 +10,12 @@ import { MainContext } from '../../../../context/MainContext';
 function VehiclesPage() {
   const [globalcontext] = useContext(MainContext);
   const [vehicles, setVehicles] = useState([]);
-  const [apiurl] = useState('/vehicles/all');
-
+  const [loadfail, setLoadFail] = useState(false);
   const [filtervehics, setFilterVehics] = useState([]);
   const [isfiltered, setIsFiltered] = useState(false);
   const [userquery, setUserQuery] = useState({ query: '' });
-  const { query } = userquery;
 
+  const { query } = userquery;
   const { logged } = globalcontext;
 
   const goToTop = () => window.scrollTo({ top: 80, behavior: 'smooth' });
@@ -24,6 +23,12 @@ function VehiclesPage() {
   const handlePrevPageClick = () => goToTop();
 
   const handleNextPageClick = () => goToTop();
+
+  const filterElements = (arr, key, query) => {
+    return arr.filter((el) =>
+      el[key].toLowerCase().includes(query.toLowerCase())
+    );
+  };
 
   const handleInputChange = (e) => {
     const { target } = e;
@@ -36,28 +41,29 @@ function VehiclesPage() {
     });
   };
 
-  const handleSearch = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setIsFiltered(true);
-    const vehics = vehicles.filter((vehicle) =>
-      vehicle.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilterVehics(vehics);
+    setFilterVehics(filterElements(vehicles, 'name', query));
   };
 
   useEffect(() => {
-    const getData = async (url = apiurl) => {
+    const getData = async (url) => {
       try {
         const { status, data, msg } = await AxiosRequest({ url });
         if (status !== 200) {
+          setLoadFail(true);
           return Toast(msg, 'warning');
         }
+        setLoadFail(false);
         setVehicles(data);
       } catch (error) {
+        setLoadFail(true);
         return Toast('Something bad happen', 'error');
       }
     };
-    getData();
-  }, [apiurl]);
+    getData('/vehicles/all');
+  }, []);
 
   return (
     <>
@@ -71,7 +77,7 @@ function VehiclesPage() {
               ></i>
             </Link>
           )}
-          <div className="search-container">
+          <form onSubmit={handleSubmit} className="search-container">
             <input
               type="text"
               name="query"
@@ -80,13 +86,17 @@ function VehiclesPage() {
               value={query}
               onChange={handleInputChange}
             />
-            <button type="button" className="btn-search" onClick={handleSearch}>
+            <button type="submit" className="btn-search">
               Search
             </button>
-          </div>
+          </form>
         </div>
         {vehicles.length === 0 ? (
-          <Loader />
+          loadfail ? (
+            <h3>No results</h3>
+          ) : (
+            <Loader />
+          )
         ) : !isfiltered ? (
           vehicles.map((vehicle, i) => (
             <VehicleProfile key={i} vehicle={vehicle} />
