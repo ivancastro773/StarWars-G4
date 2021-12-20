@@ -12,20 +12,7 @@ function Login() {
     email: '',
     password: '',
   };
-  const ShowPassword = () => {
-    if (iconPass ===true) {
-      setIconPass(false);
-    }else{
-      setIconPass(true);
-    }
-    var tipo = document.getElementById('password');
-    if (tipo.type == 'password') {
-      tipo.type = 'text';
-    } else {
-      tipo.type = 'password';
-    }
-  };
-  const [iconPass,setIconPass] = useState(true);
+  const [iconPass, setIconPass] = useState(true);
   const [authdata, setAuthData] = useState(initialState);
   const [loginin, setIsLoginin] = useState(false);
   const [globalcontext, setGlobalContext] = useContext(MainContext);
@@ -39,6 +26,20 @@ function Login() {
   }
 
   const { email, password } = authdata;
+
+  const ShowPassword = () => {
+    if (iconPass === true) {
+      setIconPass(false);
+    } else {
+      setIconPass(true);
+    }
+    var tipo = document.getElementById('password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
 
   const handleInputChange = (e) => {
     const { target } = e;
@@ -125,7 +126,13 @@ function Login() {
               value={password}
               onChange={handleInputChange}
             />
-            <span className='space-login' onClick={ShowPassword}>{iconPass ? <i class="fas fa-eye-slash"></i> : <i class="far fa-eye"></i>}</span>
+            <span className="space-login" onClick={ShowPassword}>
+              {iconPass ? (
+                <i className="fas fa-eye-slash"></i>
+              ) : (
+                <i className="far fa-eye"></i>
+              )}
+            </span>
           </div>
           <div className="btn-submit-container">
             <button

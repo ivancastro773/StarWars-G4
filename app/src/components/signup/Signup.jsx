@@ -14,31 +14,33 @@ function Signup() {
     password: '',
     passwordConfirm: '',
   };
-  const [iconPass,setIconPass] = useState(true);
+  const [iconPass, setIconPass] = useState(true);
   const [authdata, setAuthData] = useState(initialState);
   const [signingin, setIsSigningIn] = useState(false);
   const [globalcontext] = useContext(MainContext);
   const { logged } = globalcontext;
 
   const [islogged] = useLocalStorage('logged', logged);
-  const ShowPassword = () => {
-    if (iconPass ===true) {
-      setIconPass(false);
-    }else{
-      setIconPass(true);
-    }
-    var tipo = document.getElementById('password');
-    if (tipo.type == 'password') {
-      tipo.type = 'text';
-    } else {
-      tipo.type = 'password';
-    }
-  };
+
   if (islogged) {
     return <Navigate to="/" />;
   }
 
   const { name, email, password, passwordConfirm } = authdata;
+
+  const ShowPassword = () => {
+    if (iconPass === true) {
+      setIconPass(false);
+    } else {
+      setIconPass(true);
+    }
+    var tipo = document.getElementById('password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  };
 
   const handleInputChange = (e) => {
     const { target } = e;
@@ -126,7 +128,7 @@ function Signup() {
             <label>Password</label>
             <br />
             <input
-              id='password'
+              id="password"
               type="password"
               name="password"
               placeholder="Password"
@@ -134,7 +136,13 @@ function Signup() {
               value={password}
               onChange={handleInputChange}
             />
-            <span className='space-login' onClick={ShowPassword}>{iconPass ? <i class="fas fa-eye-slash"></i> : <i class="far fa-eye"></i>}</span>
+            <span className="space-login" onClick={ShowPassword}>
+              {iconPass ? (
+                <i className="fas fa-eye-slash"></i>
+              ) : (
+                <i className="far fa-eye"></i>
+              )}
+            </span>
           </div>
           <div className="form-input">
             <label>Confirm your password</label>
