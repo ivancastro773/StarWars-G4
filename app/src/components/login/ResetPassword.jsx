@@ -13,12 +13,28 @@ function ResetPassword() {
   };
   const [authdata, setAuthData] = useState(initialState);
   const [reseting, setReseting] = useState(false);
+  const [iconPass, setIconPass] = useState({ visible: true });
+  const [inputtype, setInputType] = useState({ type: 'password' });
 
   const { password } = authdata;
+  const { type } = inputtype;
+  const { visible } = iconPass;
 
   if (!token) {
     return <InvalidPage />;
   }
+
+  const showPassword = () => {
+    setIconPass((prevState) => {
+      if (prevState.visible) {
+        setInputType({ type: 'text' });
+        return { ...prevState, visible: !prevState.visible };
+      } else {
+        setInputType({ type: 'password' });
+        return { ...prevState, visible: !prevState.visible };
+      }
+    });
+  };
 
   const handleInputChange = (e) => {
     const { target } = e;
@@ -68,18 +84,27 @@ function ResetPassword() {
       <div className="form-container">
         <h2>Reset password</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Password</label>
             <br />
-            <input
-              type="password"
-              name="password"
-              placeholder="New password"
-              required
-              autoFocus
-              value={password}
-              onChange={handleInputChange}
-            />
+            <div className="auth-data-input">
+              <input
+                type={type}
+                name="password"
+                placeholder="New password"
+                required
+                autoFocus
+                value={password}
+                onChange={handleInputChange}
+              />
+              <span onClick={showPassword}>
+                {visible ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="far fa-eye"></i>
+                )}
+              </span>
+            </div>
           </div>
           <div className="btn-submit-container">
             <button

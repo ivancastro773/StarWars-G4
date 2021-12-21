@@ -56,18 +56,23 @@ function ResetEmail() {
       <div className="form-container">
         <h2>Validate email</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Email</label>
             <br />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              autoFocus
-              value={email}
-              onChange={handleInputChange}
-            />
+            <div className="auth-data-input">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                autoFocus
+                value={email}
+                onChange={handleInputChange}
+              />
+              <span>
+                <i className="far fa-envelope"></i>
+              </span>
+            </div>
           </div>
           <div className="btn-submit-container">
             <button

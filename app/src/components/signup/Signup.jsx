@@ -14,11 +14,14 @@ function Signup() {
     password: '',
     passwordConfirm: '',
   };
-  const [iconPass, setIconPass] = useState(true);
   const [authdata, setAuthData] = useState(initialState);
   const [signingin, setIsSigningIn] = useState(false);
+  const [iconPass, setIconPass] = useState({ visible: true });
+  const [inputtype, setInputType] = useState({ type: 'password' });
   const [globalcontext] = useContext(MainContext);
   const { logged } = globalcontext;
+  const { type } = inputtype;
+  const { visible } = iconPass;
 
   const [islogged] = useLocalStorage('logged', logged);
 
@@ -28,18 +31,16 @@ function Signup() {
 
   const { name, email, password, passwordConfirm } = authdata;
 
-  const ShowPassword = () => {
-    if (iconPass === true) {
-      setIconPass(false);
-    } else {
-      setIconPass(true);
-    }
-    var tipo = document.getElementById('password');
-    if (tipo.type === 'password') {
-      tipo.type = 'text';
-    } else {
-      tipo.type = 'password';
-    }
+  const showPassword = () => {
+    setIconPass((prevState) => {
+      if (prevState.visible) {
+        setInputType({ type: 'text' });
+        return { ...prevState, visible: !prevState.visible };
+      } else {
+        setInputType({ type: 'password' });
+        return { ...prevState, visible: !prevState.visible };
+      }
+    });
   };
 
   const handleInputChange = (e) => {
@@ -99,62 +100,82 @@ function Signup() {
       <div className="form-container">
         <h2>Create user</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Name</label>
             <br />
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-              autoFocus
-              value={name}
-              onChange={handleInputChange}
-            />
+            <div className="auth-data-input">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                autoFocus
+                value={name}
+                onChange={handleInputChange}
+              />
+              <span>
+                <i className="far fa-user"></i>
+              </span>
+            </div>
           </div>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Email</label>
             <br />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              value={email}
-              onChange={handleInputChange}
-            />
+            <div className="auth-data-input">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={handleInputChange}
+              />
+              <span>
+                <i className="far fa-envelope"></i>
+              </span>
+            </div>
           </div>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Password</label>
             <br />
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-              value={password}
-              onChange={handleInputChange}
-            />
-            <span className="space-login" onClick={ShowPassword}>
-              {iconPass ? (
-                <i className="fas fa-eye-slash"></i>
-              ) : (
-                <i className="far fa-eye"></i>
-              )}
-            </span>
+            <div className="auth-data-input">
+              <input
+                type={type}
+                name="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={handleInputChange}
+              />
+              <span onClick={showPassword}>
+                {visible ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="far fa-eye"></i>
+                )}
+              </span>
+            </div>
           </div>
-          <div className="form-input">
+          <div className="form-auth-input">
             <label>Confirm your password</label>
             <br />
-            <input
-              type="password"
-              name="passwordConfirm"
-              placeholder="Confirm password"
-              required
-              value={passwordConfirm}
-              onChange={handleInputChange}
-            />
+            <div className="auth-data-input">
+              <input
+                type={type}
+                name="passwordConfirm"
+                placeholder="Confirm password"
+                required
+                value={passwordConfirm}
+                onChange={handleInputChange}
+              />
+              <span onClick={showPassword}>
+                {visible ? (
+                  <i className="fas fa-eye-slash"></i>
+                ) : (
+                  <i className="far fa-eye"></i>
+                )}
+              </span>
+            </div>
           </div>
           <div className="btn-submit-container">
             <button
